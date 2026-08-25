@@ -1,0 +1,44 @@
+# Deploy on Render, so Meta talks to a real public URL and ngrok stops
+# mattering. Sending was never the problem - receiving needs a public address,
+# and this is the cheapest way to have one that doesn't depend on your laptop
+# being awake.
+#
+#   1. push this repo to GitHub
+#   2. Render -> New -> Blueprint -> pick the repo
+#   3. fill in the env vars marked sync:false in the dashboard
+#   4. point Meta's callback at  https://<your-service>.onrender.com/webhook
+#
+# KNOWN LIMITATION, on purpose
+#   The free tier has no persistent disk, so aapdaai.db is wiped on every
+#   deploy and every cold start. Fine while building - re-run seed.py. Move to
+#   Postgres before it matters.
+#
+#   The free tier also sleeps after ~15 minutes idle and takes ~50s to wake.
+#   Meta will retry the messages it sent during that wake-up, which is exactly
+#   why dedup lives in a UNIQUE constraint rather than in memory.
+
+services:
+  - type: web
+    name: aapdaai-backend
+    runtime: python
+    plan: free
+    region: singapore            # closest to India of the free regions
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"            # 3.13 removed audioop; nothing here needs it,
+                                 # but 3.12 is the safer floor for wheels
+      - key: WHATSAPP_TOKEN
+        sync: false
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      - key: WHATSAPP_VERIFY_TOKEN
+        sync: false
+      - key: OFFICER_NUMBER
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: DATABASE_PATH
+        value: aapdaai.db
