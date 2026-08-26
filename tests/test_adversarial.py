@@ -133,6 +133,27 @@ def test_a_bare_location_pin_is_not_an_incident():
     assert len(unlocatable(pin_only)) == 1
 
 
+def test_the_same_rule_holds_on_the_path_production_actually_uses(tmp_path,
+                                                                  monkeypatch):
+    """cluster() is not what runs in production - store.assign() is.
+
+    This test exists because fixing the rule in cluster() alone left the real
+    path unchanged and the suite green. A test that exercises a gentler code
+    path than production is worse than no test: it reports safety that isn't
+    there.
+    """
+    db = str(tmp_path / "t.db")
+    monkeypatch.setattr("app.config.DATABASE_PATH", db)
+    monkeypatch.setattr("app.db.DATABASE_PATH", db)
+    from app.db import init_db
+    init_db()
+
+    from app import store
+    assert store.assign([need("91901", *PATIA)]) == []          # pin only
+    assert len(store.assign([need("91902", *PATIA, headcount=50,
+                                  deficits=["water"])])) == 1   # real report
+
+
 # --- severity ordering must survive contact with reality ---------------------
 
 def test_trapped_outranks_thirsty():

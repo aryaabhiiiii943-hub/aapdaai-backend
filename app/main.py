@@ -14,7 +14,7 @@ from fastapi import (APIRouter, BackgroundTasks, FastAPI, HTTPException,
                      Request, Response)
 from fastapi.middleware.cors import CORSMiddleware
 
-from app import intake, inventory_seed
+from app import demo, intake, inventory_seed
 from app import notify as notify_mod
 from app import pipeline
 from app import resources as inventory
@@ -149,6 +149,35 @@ def _messages_in(body: dict) -> list[dict]:
                 continue
             out.extend(value.get("messages", []))
     return out
+
+
+@router.get("/")
+def index() -> dict:
+    """A map of the service.
+
+    Exists because opening the bare URL used to return {"detail":"Not Found"},
+    which looks like a broken deployment and is really just a missing route.
+    """
+    return {
+        "service": "AapdaAi ingestion",
+        "docs": "/docs  <- clickable version of everything below",
+        "read": {
+            "GET /health": "is it awake",
+            "GET /incidents": "ranked incidents, severity + confidence",
+            "GET /follow-ups": "reports we can't act on yet, and what to ask",
+            "GET /stats": "dashboard tiles",
+            "GET /resources": "ambulances, teams, trucks, boats",
+            "GET /facilities": "hospitals and shelters",
+            "GET /roadblocks": "what's impassable",
+        },
+        "write": {
+            "POST /reports": "web form / 112 operator intake",
+            "POST /incidents/{id}/verify": "a named human confirms or rejects",
+            "POST /incidents/{id}/notify": "send the officer the brief",
+            "POST /incidents/{id}/assign": "commit a named unit",
+            "POST /demo/seed": "populate the inventory",
+        },
+    }
 
 
 @router.get("/health")
@@ -330,12 +359,23 @@ def release(resource_id: int) -> dict:
 
 @router.post("/demo/seed")
 def demo_seed(force: bool = False) -> dict:
-    """Populate the inventory. Safe to call twice.
-
-    Never type mock data in front of judges - this is the button that stops
-    you having to.
-    """
+    """Populate the resource inventory. Safe to call twice."""
     return inventory_seed.seed(force=force)
+
+
+@router.post("/demo/simulate")
+def demo_simulate(clear: bool = False) -> dict:
+    """SIMULATE CRISIS. One click, a plausible morning across two districts.
+
+    These go in as real inbound messages and come out the far end having been
+    extracted, merged, clustered, scored and matched to units - the same path a
+    real WhatsApp report takes. Nothing is fabricated downstream.
+
+    `?clear=true` wipes first, so a rehearsal doesn't leave yesterday's crisis
+    on the map.
+    """
+    inventory_seed.seed()          # units must exist for anything to dispatch
+    return demo.simulate(clear=clear)
 
 
 @router.get("/stats")

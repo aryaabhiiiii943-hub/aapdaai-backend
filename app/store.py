@@ -44,7 +44,15 @@ def assign(needs: list[Need]) -> list[Incident]:
       2. it's near an existing incident -> attach, no new row
       3. neither                        -> a new incident is born
     """
-    located = [n for n in needs if n.has_location]
+    # ACTIONABLE, not merely located.
+    # A pin with nothing said, or "we are fine here", would otherwise put a
+    # red dot on the map with nothing behind it and send an operator to look
+    # at an emergency nobody described.
+    #
+    # `cluster()` in incident.py enforces the same rule - but production goes
+    # through THIS function, so fixing it there and not here left the real
+    # path unchanged while the test went green. Keep them in step.
+    located = [n for n in needs if n.is_actionable()]
 
     with get_db() as conn:
         incidents = {row["id"]: _row_to_incident(row)
