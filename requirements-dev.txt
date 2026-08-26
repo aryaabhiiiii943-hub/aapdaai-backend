@@ -1,0 +1,7 @@
+# Local only. Not installed on Render - the server has no business carrying a
+# test runner.
+#
+#   pip install -r requirements-dev.txt
+#   pytest -q
+-r requirements.txt
+pytest==8.3.4

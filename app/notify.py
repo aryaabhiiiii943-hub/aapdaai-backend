@@ -10,7 +10,7 @@ because it ARRIVED.
 """
 from __future__ import annotations
 
-from app import send, store
+from app import ask, send, store
 from app.compute import (band, brief, confidence, confidence_label, severity)
 from app.config import OFFICER_NUMBER
 from app.incident import Incident
@@ -66,10 +66,49 @@ def officer_message(incident: Incident) -> str:
     if facts:
         lines.append(" · ".join(facts))
 
+    # Put this on its own line. Buried in a list of facts an officer scanning a
+    # lock screen will miss it, and it changes how many hands are needed.
+    if b.get("vulnerable"):
+        pretty = {"children": "children", "elderly": "elderly",
+                  "pregnant": "pregnant woman", "disabled": "unable to walk"}
+        lines.append("⚠ CANNOT SELF-EVACUATE: "
+                     + ", ".join(pretty.get(v, v) for v in b["vulnerable"]))
+
     if b["send"]:
         parts = [f"{int(v)} {_UNITS.get(k, (k, ''))[0]}"
                  for k, v in b["send"].items()]
         lines.append("SEND: " + ", ".join(parts))
+
+    # The whole reason for asking "what has happened". 200 trapped by water and
+    # 200 trapped under a slab get the same headline number and completely
+    # different equipment - and only the hazard tells you which.
+    note = ask.hazard_note(b.get("hazard", ""))
+    if note:
+        lines.append(note)
+    if b.get("access_blocked"):
+        lines.append("Road access reported BLOCKED — plan an alternative approach.")
+
+    # A named unit at a known distance is a decision. "2 ambulances" is a
+    # requirement someone still has to turn into one.
+    for d in b.get("dispatch", []):
+        label = d["kind"].replace("_", " ")
+        if d["available"]:
+            lines.append(f"→ {label}: {d['unit']} ({d['org']}, {d['distance_km']} km)")
+        else:
+            lines.append(f"→ {label}: NONE AVAILABLE in district")
+
+    # The gap, stated as a number. This is the difference between "we need
+    # more" and "we are sixteen teams short".
+    for gap in b.get("shortage", []):
+        lines.append(f"SHORT {gap['shortage']} {gap['kind'].replace('_',' ')}"
+                     f" (need {gap['required']}, have {gap['available']})")
+
+    # Say it plainly rather than letting an officer read "20 rescue teams" and
+    # quietly conclude the system doesn't understand its own domain.
+    if b["exceeds_local_capacity"]:
+        lines.append("⚠ BEYOND DISTRICT CAPACITY — escalate to state: "
+                     + ", ".join(n.replace("_", " ")
+                                 for n in b["exceeds_local_capacity"]))
 
     lines.append(
         f"Confidence: {confidence_label(conf)} "

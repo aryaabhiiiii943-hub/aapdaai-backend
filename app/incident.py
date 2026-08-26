@@ -86,6 +86,26 @@ class Incident:
         return out
 
     @property
+    def vulnerable(self) -> list[str]:
+        """Union. One person mentioning children is enough to change the plan."""
+        out: list[str] = []
+        for n in self.needs:
+            for v in n.vulnerable:
+                if v not in out:
+                    out.append(v)
+        return out
+
+    @property
+    def hazard(self) -> str:
+        """What happened. First answer wins - people don't retract this."""
+        return next((n.hazard for n in self.needs if n.hazard), "")
+
+    @property
+    def access_blocked(self) -> bool:
+        """Any report of a blocked road is worth planning around."""
+        return any(n.access_blocked for n in self.needs)
+
+    @property
     def reporters(self) -> list[str]:
         """Distinct people. Five messages from one phone is one voice."""
         return sorted({n.reporter for n in self.needs if n.reporter})
@@ -122,12 +142,17 @@ def cluster(needs: list[Need]) -> list[Incident]:
     incidents that should have merged) is far safer than the alternative
     (merging two genuinely separate emergencies).
 
-    Reports without a location cannot be clustered at all. They are not lost -
-    they go back to the reporter as a follow-up question.
+    A report becomes an incident only when it is ACTIONABLE - it needs both a
+    place and something to act on. A bare location pin with no text would
+    otherwise put an empty red dot on the map with nothing behind it, and an
+    operator would go looking for an emergency nobody described.
+
+    Reports that don't qualify are not lost. They go back to the reporter as a
+    follow-up question, and join the moment they're answerable.
     """
     incidents: list[Incident] = []
     for need in sorted(needs, key=lambda n: n.received_at):
-        if not need.has_location:
+        if not need.is_actionable():
             continue
         for incident in incidents:
             if incident.accepts(need):
@@ -143,5 +168,10 @@ def cluster(needs: list[Need]) -> list[Incident]:
 
 
 def unlocatable(needs: list[Need]) -> list[Need]:
-    """Reports we cannot place. These need a follow-up, not a bin."""
-    return [n for n in needs if not n.has_location]
+    """Reports we cannot act on yet. These need a follow-up, not a bin.
+
+    Named for the commonest case - no location - but it covers the other one
+    too: a pin with nothing said. Both are one question away from being useful,
+    and neither should be discarded for arriving incomplete.
+    """
+    return [n for n in needs if not n.is_actionable()]

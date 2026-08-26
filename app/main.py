@@ -10,14 +10,39 @@ knows how to do is receive.
 import json
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, FastAPI, HTTPException, Request, Response
+from fastapi import (APIRouter, BackgroundTasks, FastAPI, HTTPException,
+                     Request, Response)
+from fastapi.middleware.cors import CORSMiddleware
 
+from app import intake, inventory_seed
 from app import notify as notify_mod
-from app import pipeline, store
+from app import pipeline
+from app import resources as inventory
+from app import store
 from app.config import WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_VERIFY_TOKEN
 from app.db import already_seen, get_db, init_db
 
 app = FastAPI(title="AapdaAi ingestion")
+
+# The dashboard is served from a different origin than this API, so without
+# this a browser refuses every request before it leaves the machine - and the
+# error it shows blames CORS rather than anything you can see in these logs.
+#
+# allow_origins is a list, not "*", because "*" plus credentials is rejected by
+# browsers and because naming the origins is the honest version of this.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://aapat.freebuff.app",
+        "http://localhost:3000",       # the dashboard running locally
+        "http://localhost:5173",       # vite's default
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",   # preview deployments
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 router = APIRouter()
 
 
@@ -42,7 +67,7 @@ def verify(request: Request) -> Response:
 
 
 @router.post("/webhook")
-async def receive(request: Request) -> Response:
+async def receive(request: Request, background: BackgroundTasks) -> Response:
     """Every message lands here.
 
     Note what this does NOT do: interpret, reply, or fail. It stores and gets
@@ -50,7 +75,9 @@ async def receive(request: Request) -> Response:
     Meta resend the same broken payload forever.
     """
     body = await request.json()
-    senders: set[str] = set()
+    # phone -> the text of their most recent message in this payload, so a
+    # reply of "2" can be read as the answer to what we last asked them.
+    senders: dict[str, str] = {}
 
     for message in _messages_in(body):
         wa_id = message.get("id")
@@ -72,25 +99,32 @@ async def receive(request: Request) -> Response:
                 ),
             )
         print(f"[recv] {message.get('type')} from {message.get('from')}")
-        senders.add(message.get("from", ""))
+        body_text = (message.get("text") or {}).get("body", "")
+        senders[message.get("from", "")] = body_text or senders.get(
+            message.get("from", ""), "")
 
     # Reply to each person once, after all their messages in this payload are
     # stored - not once per message, or someone who sends text and a pin gets
     # two answers.
     #
-    # This runs inline, which is fine at demo scale but is the wrong shape for
-    # real traffic: Meta gives us seconds to answer, and a slow send here
-    # would make it retry. The fix is a background task, not more speed.
-    for sender in senders:
+    # AFTER we answer Meta, not before. Working out the reply can involve a
+    # model call and an outbound send; doing that inside Meta's timeout window
+    # means a slow moment turns into a retry, and the retry arrives while the
+    # first one is still running. Storing is fast and must block; thinking is
+    # slow and must not.
+    for sender, text in senders.items():
         if sender:
-            try:
-                pipeline.respond_to(sender)
-            except Exception as err:              # noqa: BLE001
-                # A failed reply must never turn into a non-200, or Meta
-                # resends the message and we process it all over again.
-                print(f"[reply] {type(err).__name__}: {err}")
+            background.add_task(_reply, sender, text)
 
     return Response(content="ok", status_code=200)
+
+
+def _reply(sender: str, text: str) -> None:
+    """Runs after the 200 has gone back to Meta. Never allowed to raise."""
+    try:
+        pipeline.respond_to(sender, text)
+    except Exception as err:                      # noqa: BLE001
+        print(f"[reply] {type(err).__name__}: {err}")
 
 
 def _messages_in(body: dict) -> list[dict]:
@@ -221,16 +255,102 @@ def preview(incident_id: int) -> dict:
     return {"message": notify_mod.officer_message(match)}
 
 
+@router.post("/reports")
+def submit_report(body: dict) -> dict:
+    """A report from anywhere that isn't WhatsApp.
+
+    The public form, and the 112 operator's console - an operator taking a
+    phone call types what they hear here and it joins the same queue as
+    everything else.
+
+    `source` sets the trust weight: an identified responder outweighs an
+    anonymous form, and both are turned down rather than off.
+    """
+    try:
+        return intake.submit(
+            text=str(body.get("text", "")),
+            lat=body.get("lat"),
+            lng=body.get("lng"),
+            place=str(body.get("place", "")),
+            phone=str(body.get("phone", "")),
+            source=str(body.get("source", "web")),
+            reported_by=str(body.get("reported_by", "")),
+        )
+    except ValueError as err:
+        raise HTTPException(422, str(err)) from err
+
+
+# --- inventory ---------------------------------------------------------------
+
+@router.get("/resources")
+def list_resources(kind: str = "", status: str = "") -> dict:
+    """Ambulances, rescue teams, fire trucks, boats, heavy rescue.
+
+    Seeded, deliberately. No Indian state publishes live positions over an
+    API - what's real here is the shape, so a 108/ERSS feed replaces the seed
+    and nothing above it changes.
+    """
+    return {"resources": inventory.all_resources(kind=kind, status=status),
+            "counts": inventory.counts()}
+
+
+@router.get("/facilities")
+def list_facilities(kind: str = "") -> dict:
+    """Hospitals and shelters. Fixed, and they fill up rather than get busy."""
+    return {"facilities": inventory.facilities(kind=kind)}
+
+
+@router.get("/roadblocks")
+def list_roadblocks() -> dict:
+    return {"road_blocks": inventory.road_blocks()}
+
+
+@router.post("/incidents/{incident_id}/assign")
+def assign(incident_id: int, body: dict) -> dict:
+    """Commit a named unit, and take it out of the available pool.
+
+    The status change is the point. A recommendation that leaves the vehicle
+    in circulation is a suggestion; this is an allocation.
+    """
+    try:
+        result = inventory.assign(incident_id, int(body.get("resource_id", 0)),
+                                  body.get("purpose", "response"))
+    except LookupError as err:
+        raise HTTPException(404, str(err)) from err
+    except (ValueError, TypeError) as err:
+        raise HTTPException(409, str(err)) from err
+    store.set_response(incident_id, "assigned")
+    return result
+
+
+@router.post("/resources/{resource_id}/release")
+def release(resource_id: int) -> dict:
+    return inventory.release(resource_id)
+
+
+@router.post("/demo/seed")
+def demo_seed(force: bool = False) -> dict:
+    """Populate the inventory. Safe to call twice.
+
+    Never type mock data in front of judges - this is the button that stops
+    you having to.
+    """
+    return inventory_seed.seed(force=force)
+
+
 @router.get("/stats")
 def stats() -> dict:
     """The tiles at the top of the dashboard."""
     briefs = pipeline.briefs()
+    counts = inventory.counts()
     return {
         "incidents": len(briefs),
         "critical": sum(1 for b in briefs if b["severity_band"] == "critical"),
         "people_affected": sum(b["people"] or 0 for b in briefs),
         "awaiting_confirmation": sum(
             1 for b in briefs if b["confirmation"] == "unconfirmed"),
+        "resources_available": counts["available"],
+        "resources_deployed": counts["deployed"],
     }
 
 

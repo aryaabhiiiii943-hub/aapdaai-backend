@@ -34,6 +34,31 @@ PEOPLE_PER_TENT = 5
 INJURED_PER_AMBULANCE = 4         # triage capacity of one vehicle per run
 TRAPPED_PER_RESCUE_TEAM = 10
 
+# What one district can plausibly field within a couple of hours, from its own
+# resources, before asking the state for help. Rough, and meant to be argued
+# with - the point is that SOME ceiling exists.
+#
+# WHY WE FLAG RATHER THAN CAP
+#     A report of 200 people trapped really does imply 20 rescue teams. Capping
+#     the number at 4 would quietly turn 200 trapped people into 40, and the
+#     officer would never learn that the requirement is beyond them.
+#
+#     So the requirement stands, and we say plainly that it exceeds local
+#     capacity and needs escalating. That is what escalation IS - and it is a
+#     better answer than a number nobody can act on.
+LOCAL_CAPACITY = {
+    "rescue_teams": 4,
+    "ambulances": 6,
+    "tents": 200,
+    "food_packs": 2000,
+    "water_litres_now": 20_000,
+}
+
+# One tanker's worth. Used to work out how many trips the water alone needs -
+# "540 litres" and "18,000 litres" are the same sentence and very different
+# logistics.
+LITRES_PER_TANKER = 5000
+
 
 def resources_for(incident: Incident) -> dict[str, float | int]:
     """What to actually send. Empty dict if we don't know enough yet."""
@@ -63,6 +88,16 @@ def resources_for(incident: Incident) -> dict[str, float | int]:
         out["rescue_teams"] = 1
 
     return out
+
+
+def exceeds_local_capacity(resources: dict) -> list[str]:
+    """Which requirements are beyond what a district can field itself.
+
+    Returns the names, so the officer sees exactly what to escalate rather
+    than a vague 'this is big'.
+    """
+    return [name for name, amount in resources.items()
+            if name in LOCAL_CAPACITY and amount > LOCAL_CAPACITY[name]]
 
 
 # --- how sure are we ---------------------------------------------------------
@@ -108,6 +143,8 @@ def confidence_label(value: float) -> str:
 DEFICIT_WEIGHT = {"rescue": 40, "medical": 35, "water": 30,
                   "food": 20, "shelter": 20}
 
+VULNERABLE_MAX = 15
+
 
 def severity(incident: Incident, now: datetime | None = None) -> int:
     """0..100 - how bad this is IF TRUE. Never mixed with confidence.
@@ -129,6 +166,16 @@ def severity(incident: Incident, now: datetime | None = None) -> int:
         score += min(incident.injured / 10, 1.0) * 20
     if incident.trapped:
         score += min(incident.trapped / 10, 1.0) * 20
+
+    # PEOPLE WHO CANNOT GET THEMSELVES OUT.
+    # Not a sympathy weighting. A group that includes children, elderly,
+    # pregnant women or people who cannot walk takes longer to move, needs more
+    # hands, and cannot wait for the second wave. Same headcount, harder
+    # rescue - so it goes higher in the queue.
+    #
+    # Capped at 15 so it sharpens the ordering without ever outweighing the
+    # difference between a shortage of food and someone trapped under a slab.
+    score += min(len(incident.vulnerable) * 6, VULNERABLE_MAX)
 
     # AGE MAKES IT WORSE, NOT BETTER.
     # The formula on the current site decays an incident toward zero over 20
@@ -159,8 +206,26 @@ def brief(incident: Incident) -> dict:
     A priority number is not actionable. Where, what, how much, how sure, and
     why this one first - that is.
     """
+    from app import resources as inventory
+
     sev = severity(incident)
     conf = confidence(incident)
+    resources = resources_for(incident)
+    beyond = exceeds_local_capacity(resources)
+
+    # Which named units, and whether enough of them exist. "Send 2 ambulances"
+    # is a requirement; "send Capital Hospital Ambulance 04, 4.2 km" is a
+    # decision, and the difference is an inventory.
+    units = inventory.recommend(incident)
+    required = {u["kind"]: 1 for u in units}
+    if resources.get("ambulances"):
+        required["ambulance"] = int(resources["ambulances"])
+    if resources.get("rescue_teams"):
+        required["rescue_team"] = int(resources["rescue_teams"])
+    if resources.get("water_litres_now"):
+        required["supply_vehicle"] = max(
+            1, -(-int(resources["water_litres_now"]) // LITRES_PER_TANKER))
+    gaps = inventory.shortage(required)
     return {
         "id": incident.id,
         "place": incident.place_text or "unnamed location",
@@ -170,7 +235,14 @@ def brief(incident: Incident) -> dict:
         "injured": incident.injured,
         "trapped": incident.trapped,
         "needs": incident.deficits,
-        "send": resources_for(incident),
+        "vulnerable": incident.vulnerable,
+        "hazard": incident.hazard,
+        "access_blocked": incident.access_blocked,
+        "send": resources,
+        "dispatch": units,               # named units, nearest available
+        "shortage": gaps,                # need minus what exists
+        "assigned": inventory.assigned_to(incident.id) if incident.id else [],
+        "exceeds_local_capacity": beyond,
         "severity": sev,
         "severity_band": band(sev),
         "confidence": conf,

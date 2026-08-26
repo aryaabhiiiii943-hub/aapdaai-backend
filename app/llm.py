@@ -96,6 +96,67 @@ def read_message(text: str) -> dict | None:
         return None
 
 
+# --- reading an answer we can't parse ---------------------------------------
+
+ANSWER_SYSTEM = """A person in an emergency was asked a question with numbered \
+options. They replied in their own words instead of tapping a number.
+
+Decide which option they meant.
+
+Reply with ONLY a JSON object: {"choice": <number>} using the option's number, \
+or {"choice": null} if their reply doesn't clearly match any option.
+
+Judge meaning, not wording. "the water is up to my waist" means flooding. \
+"the building came down" means collapse. "everyone is fine" to a question about \
+injuries means none. If they are describing something else entirely, or asking \
+a question of their own, return null - guessing wrong here sends the wrong \
+equipment."""
+
+
+def interpret_answer(question: str, options: list[str], reply: str) -> int | None:
+    """Which option did they mean? 1-based, or None.
+
+    This is the model doing what the rules can't: reading intent out of a
+    sentence. It is a fallback, never the first attempt - a tapped "2" must
+    never depend on an API being up.
+    """
+    if not available() or not reply.strip() or not options:
+        return None
+
+    listed = "\n".join(f"{i}. {o}" for i, o in enumerate(options, start=1))
+    prompt = f"Question: {question}\nOptions:\n{listed}\n\nTheir reply: {reply}"
+
+    result = None
+    try:
+        with httpx.Client(timeout=TIMEOUT) as client:
+            response = client.post(
+                f"{GROQ_API}/chat/completions",
+                headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+                json={
+                    "model": GROQ_TEXT_MODEL,
+                    "temperature": 0,
+                    "response_format": {"type": "json_object"},
+                    "messages": [
+                        {"role": "system", "content": ANSWER_SYSTEM},
+                        {"role": "user", "content": prompt[:1500]},
+                    ],
+                },
+            )
+        if response.status_code == 200:
+            result = _extract_json(
+                response.json()["choices"][0]["message"]["content"])
+    except Exception as err:                      # noqa: BLE001
+        print(f"[llm] answer: {type(err).__name__}: {err}")
+        return None
+
+    if not result:
+        return None
+    choice = result.get("choice")
+    if isinstance(choice, int) and 1 <= choice <= len(options):
+        return choice
+    return None
+
+
 # --- voice ------------------------------------------------------------------
 
 def transcribe(audio: bytes, filename: str = "note.ogg") -> str:

@@ -16,6 +16,10 @@ from datetime import datetime, timezone
 # from a handful of categories, not a catalogue.
 DEFICITS = ("water", "food", "medical", "shelter", "rescue")
 
+# People who cannot self-evacuate. Named categories rather than a flag, because
+# what you send differs: a stretcher is not a boat is not a paediatric kit.
+VULNERABLE = ("children", "elderly", "pregnant", "disabled")
+
 # How far one report from each channel gets you on its own. Nothing here is
 # ever a filter - a low-trust source is turned down, never off. The lowest
 # number still rises to certainty once enough independent people say it.
@@ -59,6 +63,20 @@ class Need:
     injured: int | None = None
     trapped: int | None = None
     deficits: list[str] = field(default_factory=list)
+
+    # WHAT happened, not just what is needed. "200 stuck" behaves completely
+    # differently depending on this: cut off by floodwater needs boats, under
+    # rubble needs heavy rescue, and a fire needs neither. Without it every
+    # entrapment gets the same answer.
+    hazard: str = ""            # fire|flood|collapse|earthquake|storm|other
+    access_blocked: bool | None = None
+
+    # WHO is there, not just how many.
+    # The reason this raises priority is not sentiment - it's that these are
+    # people who cannot get themselves out. Forty adults who can walk and forty
+    # that include a dozen who cannot are the same headcount and completely
+    # different rescues: the second needs carrying, more time, and more hands.
+    vulnerable: list[str] = field(default_factory=list)
 
     # --- bookkeeping ---------------------------------------------------------
     incident_id: int | None = None  # set once clustered

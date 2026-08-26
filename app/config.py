@@ -18,6 +18,9 @@ WHATSAPP_PHONE_NUMBER_ID = os.environ.get("WHATSAPP_PHONE_NUMBER_ID", "")
 WHATSAPP_VERIFY_TOKEN = os.environ.get("WHATSAPP_VERIFY_TOKEN", "")
 OFFICER_NUMBER = os.environ.get("OFFICER_NUMBER", "")
 
+# Set on Render, absent on your laptop. Its presence is the only switch between
+# Postgres and a local SQLite file.
+DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
 DATABASE_PATH = os.environ.get("DATABASE_PATH", "aapdaai.db")
 
 GRAPH_API = "https://graph.facebook.com/v21.0"

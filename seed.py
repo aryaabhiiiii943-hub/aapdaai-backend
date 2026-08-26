@@ -96,17 +96,14 @@ def insert() -> None:
     added = 0
     with get_db() as conn:
         for msg in build():
-            try:
-                conn.execute(
-                    "INSERT INTO raw_messages "
-                    "(wa_message_id, from_number, kind, payload, received_at) "
-                    "VALUES (?, ?, ?, ?, ?)",
-                    (msg["id"], msg["from"], msg["type"], json.dumps(msg),
-                     datetime.now(timezone.utc).isoformat()),
-                )
-                added += 1
-            except Exception:
-                pass       # UNIQUE violation - already seeded, which is fine
+            cur = conn.execute(
+                "INSERT INTO raw_messages "
+                "(wa_message_id, from_number, kind, payload, received_at) "
+                "VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING",
+                (msg["id"], msg["from"], msg["type"], json.dumps(msg),
+                 datetime.now(timezone.utc).isoformat()),
+            )
+            added += cur.rowcount if cur.rowcount and cur.rowcount > 0 else 0
     print(f"inserted {added} message(s)")
 
 

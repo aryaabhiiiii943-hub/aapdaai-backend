@@ -67,7 +67,7 @@ def assign(needs: list[Need]) -> list[Incident]:
             match = _nearest(incidents.values(), need)
             if match is None:
                 # 3. new emergency
-                cur = conn.execute(
+                new_id = conn.insert_id(
                     "INSERT INTO incidents "
                     "(lat, lng, place_text, created_at, updated_at) "
                     "VALUES (?, ?, ?, ?, ?)",
@@ -75,7 +75,7 @@ def assign(needs: list[Need]) -> list[Incident]:
                      need.received_at.isoformat(), _now()),
                 )
                 match = Incident(
-                    id=cur.lastrowid,
+                    id=new_id,
                     lat=need.lat, lng=need.lng,
                     place_text=need.place_text,
                     created_at=need.received_at,
@@ -86,8 +86,11 @@ def assign(needs: list[Need]) -> list[Incident]:
             need.incident_id = match.id
             links[key] = match.id
             conn.execute(
-                "INSERT OR REPLACE INTO incident_reports "
-                "(report_key, incident_id, linked_at) VALUES (?, ?, ?)",
+                "INSERT INTO incident_reports "
+                "(report_key, incident_id, linked_at) VALUES (?, ?, ?) "
+                "ON CONFLICT (report_key) DO UPDATE SET "
+                "incident_id = excluded.incident_id, "
+                "linked_at = excluded.linked_at",
                 (key, match.id, _now()),
             )
 

@@ -41,6 +41,31 @@ _DEFICIT_WORDS = {
                "save us", "phasa", "drowning"],
 }
 
+# People who cannot get themselves out. Written the way people actually say it
+# in Odisha, including the words a panicking parent uses rather than the ones a
+# form would.
+_VULNERABLE_WORDS = {
+    "children": ["child", "children", "kid", "kids", "baby", "babies",
+                 "infant", "toddler", "bachche", "bachcha", "bacha", "bache",
+                 "pilaa", "pila", "students", "school children"],
+    "elderly": ["elderly", "old man", "old woman", "old people", "aged",
+                "senior citizen", "grandmother", "grandfather", "buzurg",
+                "bujurg", "budha", "budhi", "brudha"],
+    "pregnant": ["pregnant", "pregnancy", "expecting", "garbhvati",
+                 "garbhavati", "garbhabati", "labour pain", "labor pain"],
+    "disabled": ["disabled", "handicap", "handicapped", "wheelchair",
+                 "viklang", "divyang", "cannot walk", "can't walk",
+                 "unable to walk", "cannot move", "can't move", "paralysed",
+                 "paralyzed", "bedridden"],
+}
+
+
+def _vulnerable_in(text: str) -> list[str]:
+    low = text.lower()
+    return [category for category, words in _VULNERABLE_WORDS.items()
+            if any(w in low for w in words)]
+
+
 # "no water" / "water nahi" / "without food" - a deficit is usually a negation
 _NEGATORS = ("no ", "not ", "without ", "nahi", "nahin", "na ", "out of ",
              "ran out", "finished", "khatam", "sesh")
@@ -150,7 +175,10 @@ def extract(payload: dict) -> Need:
     stored in raw_messages. Nothing here reaches back out to the network.
     """
     need = Need(
-        source="whatsapp",
+        # Set by the web/operator intake; absent means it came from WhatsApp.
+        # This is the only thing downstream that differs between channels, and
+        # all it changes is how much one report is worth on its own.
+        source=payload.get("_source", "whatsapp"),
         reporter=payload.get("from", ""),
         wa_message_id=payload.get("id", ""),
     )
@@ -194,6 +222,7 @@ def extract(payload: dict) -> Need:
             need.headcount = int(m.group(1))
 
     need.deficits = _deficits_in(text)
+    need.vulnerable = _vulnerable_in(text)
 
     # An injured or trapped count implies the matching need even if unsaid.
     if need.injured and "medical" not in need.deficits:
@@ -308,6 +337,9 @@ def merge(needs: list[Need]) -> Need | None:
         for d in n.deficits:
             if d not in merged.deficits:
                 merged.deficits.append(d)
+        for v in n.vulnerable:
+            if v not in merged.vulnerable:
+                merged.vulnerable.append(v)
 
     merged.raw_text = " | ".join(texts)
     return merged
