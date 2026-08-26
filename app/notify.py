@@ -178,6 +178,28 @@ def acknowledge(need: Need) -> send.SendResult:
         "authority. We will message you when help is on the way.")
 
 
+def help_dispatched(incident: Incident, units: list[str]) -> list[send.SendResult]:
+    """Tell everyone who reported it that something is coming.
+
+    WHY EVERYONE, NOT JUST THE FIRST
+        Four people reported the Patia flood. Telling one of them and leaving
+        the other three in silence is how the other three conclude nobody is
+        coming and start calling 112 - which is the queue this system exists
+        to take pressure off.
+
+    WHY IT NAMES THE UNIT
+        "Help is on the way" is what you say when you have nothing. "ODRAF
+        Boat Unit 2 has been dispatched" is checkable, and a person who can
+        check is a person who waits instead of panicking.
+    """
+    named = ", ".join(u for u in units if u) or "a response team"
+    body = (f"Update on your report from {incident.place_text or 'your location'}:\n\n"
+            f"*{named}* has been dispatched to you.\n\n"
+            "Stay where you are if it is safe to do so. We will message you "
+            "again to confirm help has reached you.")
+    return [send.send_text(reporter, body) for reporter in incident.reporters]
+
+
 def delivery_check(incident: Incident) -> list[send.SendResult]:
     """Ask everyone who reported it whether help actually arrived.
 

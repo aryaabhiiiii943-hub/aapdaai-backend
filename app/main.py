@@ -335,11 +335,21 @@ def list_roadblocks() -> dict:
 
 
 @router.post("/incidents/{incident_id}/assign")
-def assign(incident_id: int, body: dict) -> dict:
-    """Commit a named unit, and take it out of the available pool.
+def assign(incident_id: int, body: dict, background: BackgroundTasks) -> dict:
+    """Commit a named unit, take it out of the pool, and tell the reporters.
 
-    The status change is the point. A recommendation that leaves the vehicle
-    in circulation is a suggestion; this is an allocation.
+    Three things happen here and all three matter:
+
+      * the unit is committed, so it stops being offered to the next incident
+      * the incident's response state moves to 'assigned'
+      * EVERYONE who reported it hears that something is coming, by name
+
+    That last one is the loop closing. Four people reported the Patia flood;
+    telling one and leaving three in silence sends the other three back to
+    calling 112.
+
+    The message goes out in the background - a slow send must not make the
+    officer's button appear to fail.
     """
     try:
         result = inventory.assign(incident_id, int(body.get("resource_id", 0)),
@@ -348,8 +358,22 @@ def assign(incident_id: int, body: dict) -> dict:
         raise HTTPException(404, str(err)) from err
     except (ValueError, TypeError) as err:
         raise HTTPException(409, str(err)) from err
+
     store.set_response(incident_id, "assigned")
+    background.add_task(_tell_reporters, incident_id, result.get("unit", ""))
+    result["reporters_notified"] = True
     return result
+
+
+def _tell_reporters(incident_id: int, unit: str) -> None:
+    """Runs after the officer's request has already returned."""
+    try:
+        incidents, _ = pipeline.build()
+        match = next((i for i in incidents if i.id == incident_id), None)
+        if match:
+            notify_mod.help_dispatched(match, [unit])
+    except Exception as err:                      # noqa: BLE001
+        print(f"[notify] {type(err).__name__}: {err}")
 
 
 @router.post("/resources/{resource_id}/release")
