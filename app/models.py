@@ -95,6 +95,12 @@ class Need:
     # damage classifier that's wrong a third of the time is worse than none.
     photos: list[str] = field(default_factory=list)
 
+    # The name they typed on the web form, or the operator who took the call.
+    # Kept separate from `reporter` (a phone number) because a person must be
+    # able to find their own report again - and a name they volunteered is not
+    # the same disclosure as a phone number on a control-room wall.
+    reported_by: str = ""
+
     # ------------------------------------------------------------------------
     @property
     def key(self) -> str:

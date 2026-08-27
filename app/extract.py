@@ -200,6 +200,7 @@ def extract(payload: dict) -> Need:
 
     # Photos ride along on whatever message carried them.
     need.photos = [p for p in (payload.get("_photos") or []) if p][:3]
+    need.reported_by = (payload.get("_reported_by") or "")[:80]
 
     if kind == "text":
         need.raw_text = payload.get("text", {}).get("body", "")
@@ -346,6 +347,8 @@ def merge(needs: list[Need]) -> Need | None:
         for p in n.photos:
             if p not in merged.photos:
                 merged.photos.append(p)
+        if n.reported_by and not merged.reported_by:
+            merged.reported_by = n.reported_by
 
     merged.raw_text = " | ".join(texts)
     return merged

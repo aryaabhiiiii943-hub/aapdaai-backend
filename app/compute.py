@@ -237,6 +237,7 @@ def brief(incident: Incident) -> dict:
         "needs": incident.deficits,
         "vulnerable": incident.vulnerable,
         "photos": incident.photos,
+        "reported_by": incident.reported_by,
         "hazard": incident.hazard,
         "access_blocked": incident.access_blocked,
         "send": resources,

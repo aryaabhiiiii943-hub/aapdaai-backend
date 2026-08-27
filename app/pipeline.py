@@ -120,9 +120,11 @@ def follow_ups(use_llm: bool = False) -> list[dict]:
     _, stuck = build(use_llm=use_llm)
     return [{
         "reporter": n.reporter,
+        "reported_by": n.reported_by,     # so a citizen can find their own
         "said": n.raw_text[:200],
         "missing": n.missing(),
         "ask": _question_for(n.missing()),
+        "received_at": n.received_at.isoformat(),
     } for n in stuck]
 
 

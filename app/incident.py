@@ -96,6 +96,15 @@ class Incident:
         return out
 
     @property
+    def reported_by(self) -> list[str]:
+        """Names people gave, so they can find their own report again."""
+        out: list[str] = []
+        for n in self.needs:
+            if n.reported_by and n.reported_by not in out:
+                out.append(n.reported_by)
+        return out
+
+    @property
     def photos(self) -> list[str]:
         """Everything anyone sent, capped. The verifier looks; nothing else does."""
         out: list[str] = []
