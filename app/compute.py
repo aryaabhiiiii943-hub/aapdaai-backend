@@ -200,6 +200,17 @@ def band(value: int) -> str:
 
 # --- the thing an officer can act on -----------------------------------------
 
+def _assistance(incident: Incident) -> dict:
+    """Never let this raise - a brief with no assistance state is still useful,
+    a dashboard that 500s is not."""
+    try:
+        from app import assistance
+        return assistance.state_of(incident)
+    except Exception:                             # noqa: BLE001
+        return {"assistance": "unassisted", "asked": 0, "answered": 0,
+                "confirmed_arrived": 0, "still_waiting": 0}
+
+
 def brief(incident: Incident) -> dict:
     """Everything needed to make one decision, and nothing else.
 
@@ -253,5 +264,8 @@ def brief(incident: Incident) -> dict:
         "independent_reporters": len(incident.reporters),
         "confirmation": incident.confirmation,
         "response": incident.response,
+        # What the people there actually experienced, which is not the same
+        # thing as what we dispatched.
+        **_assistance(incident),
         "created_at": incident.created_at.isoformat(),
     }

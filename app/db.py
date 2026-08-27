@@ -157,6 +157,27 @@ CREATE TABLE IF NOT EXISTS assignments (
 );
 
 CREATE INDEX IF NOT EXISTS idx_assign_incident ON assignments(incident_id);
+
+-- DID HELP ACTUALLY REACH THEM?
+--
+-- The question nobody can answer today. Calls get logged, units get tasked,
+-- and whether anyone actually arrived lives in a duty officer's memory.
+--
+-- 'assigned' means WE sent something. This table is what the PERSON THERE
+-- experienced, which is the only version that counts. A map that turns green
+-- because a truck was dispatched is a map that lies.
+CREATE TABLE IF NOT EXISTS arrival_checks (
+    id          {_PK},
+    incident_id INTEGER NOT NULL,
+    reporter    TEXT NOT NULL,
+    asked_at    TEXT NOT NULL,
+    replied_at  TEXT,
+    arrived     {_BOOL},          -- NULL until they answer
+    note        TEXT NOT NULL DEFAULT ''
+);
+
+CREATE INDEX IF NOT EXISTS idx_arrival_incident
+    ON arrival_checks(incident_id);
 """
 
 

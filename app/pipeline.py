@@ -141,8 +141,27 @@ def respond_to(reporter: str, last_text: str = "") -> str:
     reaching an officer; questions only sharpen the estimate. Someone who
     stops replying is not someone we stop helping.
     """
-    from app import ask, notify
+    from app import ask, assistance, notify
     from app.models import Need
+
+    # BEFORE ANYTHING ELSE: are they answering "did help reach you?"
+    # That question outranks every other conversation we might be having with
+    # them, and "no" is the single most important word this system can hear.
+    if last_text.strip():
+        answered = assistance.record_reply(reporter, last_text)
+        if answered == assistance.ARRIVED:
+            notify.send.send_text(
+                reporter,
+                "Thank you — we've recorded that help reached you. "
+                "Message us again if the situation changes.")
+            return "arrival:confirmed"
+        if answered == assistance.UNREACHABLE:
+            notify.send.send_text(
+                reporter,
+                "Understood — we've flagged that help has not reached you yet "
+                "and the control room has been alerted. Stay where you are if "
+                "it is safe to do so.")
+            return "arrival:still_waiting"
 
     state = _conversation(reporter)
     answers = state.get("answers", {})

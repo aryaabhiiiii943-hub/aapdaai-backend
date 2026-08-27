@@ -14,7 +14,7 @@ from fastapi import (APIRouter, BackgroundTasks, FastAPI, HTTPException,
                      Request, Response)
 from fastapi.middleware.cors import CORSMiddleware
 
-from app import demo, intake, inventory_seed
+from app import assistance, demo, intake, inventory_seed
 from app import notify as notify_mod
 from app import pipeline
 from app import resources as inventory
@@ -403,6 +403,35 @@ def demo_simulate(clear: bool = False) -> dict:
     return demo.simulate(clear=clear)
 
 
+@router.get("/unassisted")
+def unassisted() -> dict:
+    """Reports nobody has reached yet — oldest first.
+
+    The number a control room cannot produce today. Sorted by how long they've
+    been waiting rather than by severity, on purpose: a small emergency nobody
+    has touched for three hours is a worse failure than a large one being
+    actively worked.
+    """
+    incidents, _ = pipeline.build()
+    return {"unassisted": assistance.unassisted(incidents)}
+
+
+@router.post("/incidents/{incident_id}/check-arrival")
+def check_arrival(incident_id: int) -> dict:
+    """Ask everyone who reported it whether help actually reached them.
+
+    The only honest way to close a report. "We sent a truck" is not the same
+    as "it got there", and only the people standing there know which.
+    """
+    incidents, _ = pipeline.build()
+    match = next((i for i in incidents if i.id == incident_id), None)
+    if match is None:
+        raise HTTPException(404, f"no incident {incident_id}")
+    asked = assistance.ask_arrival(match)
+    return {"incident_id": incident_id, "asked": asked,
+            "reporters": match.reporters}
+
+
 @router.get("/stats")
 def stats() -> dict:
     """The tiles at the top of the dashboard."""
@@ -416,6 +445,11 @@ def stats() -> dict:
             1 for b in briefs if b["confirmation"] == "unconfirmed"),
         "resources_available": counts["available"],
         "resources_deployed": counts["deployed"],
+        # The tile that matters most and that nobody else can produce.
+        "unassisted": sum(1 for b in briefs
+                          if b.get("assistance") in ("unassisted", "unreachable")),
+        "arrival_confirmed": sum(1 for b in briefs
+                                 if b.get("assistance") == "arrived"),
     }
 
 
