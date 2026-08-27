@@ -37,7 +37,11 @@ app.add_middleware(
         "http://localhost:3000",       # the dashboard running locally
         "http://localhost:5173",       # vite's default
     ],
-    allow_origin_regex=r"https://.*\.vercel\.app",   # preview deployments
+    # Any Render static site or Vercel preview. Loose, and deliberately so:
+    # this API has no auth yet, so CORS is not what's protecting it - and a
+    # blocked origin at 9am on demo day costs more than it saves. Tighten to
+    # the exact domain once there's a real one.
+    allow_origin_regex=r"https://.*\.(onrender\.com|vercel\.app|netlify\.app)",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
