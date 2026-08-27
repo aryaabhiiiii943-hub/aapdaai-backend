@@ -90,6 +90,11 @@ class Need:
     llm_fields: list[str] = field(default_factory=list)
     transcript: str = ""            # set when the message was a voice note
 
+    # Photos of the scene. Shown to the human verifier, never classified by a
+    # model - showing a responder the actual image is most of the value, and a
+    # damage classifier that's wrong a third of the time is worse than none.
+    photos: list[str] = field(default_factory=list)
+
     # ------------------------------------------------------------------------
     @property
     def key(self) -> str:

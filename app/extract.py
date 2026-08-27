@@ -198,6 +198,9 @@ def extract(payload: dict) -> Need:
         need.raw_text = f"[location] {need.place_text}".strip()
         return need
 
+    # Photos ride along on whatever message carried them.
+    need.photos = [p for p in (payload.get("_photos") or []) if p][:3]
+
     if kind == "text":
         need.raw_text = payload.get("text", {}).get("body", "")
         need.transcript = payload.get("_transcript", "")   # set by prepare()
@@ -340,6 +343,9 @@ def merge(needs: list[Need]) -> Need | None:
         for v in n.vulnerable:
             if v not in merged.vulnerable:
                 merged.vulnerable.append(v)
+        for p in n.photos:
+            if p not in merged.photos:
+                merged.photos.append(p)
 
     merged.raw_text = " | ".join(texts)
     return merged

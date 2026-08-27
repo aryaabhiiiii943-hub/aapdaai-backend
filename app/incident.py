@@ -96,6 +96,16 @@ class Incident:
         return out
 
     @property
+    def photos(self) -> list[str]:
+        """Everything anyone sent, capped. The verifier looks; nothing else does."""
+        out: list[str] = []
+        for n in self.needs:
+            for p in n.photos:
+                if p not in out:
+                    out.append(p)
+        return out[:6]
+
+    @property
     def hazard(self) -> str:
         """What happened. First answer wins - people don't retract this."""
         return next((n.hazard for n in self.needs if n.hazard), "")

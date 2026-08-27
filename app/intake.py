@@ -47,7 +47,7 @@ def _store(payload: dict, reporter: str, kind: str) -> None:
 
 def submit(text: str, lat: float | None = None, lng: float | None = None,
            place: str = "", phone: str = "", source: str = "web",
-           reported_by: str = "") -> dict:
+           reported_by: str = "", photos: list[str] | None = None) -> dict:
     """One report in. Returns what we understood, so the form can echo it back.
 
     `phone` is optional. Given, we can ask follow-up questions and tell them
@@ -67,7 +67,13 @@ def submit(text: str, lat: float | None = None, lng: float | None = None,
     stamp = str(int(datetime.now(timezone.utc).timestamp()))
     batch = uuid.uuid4().hex[:10]
 
-    if text.strip():
+    # Cap hard. These are stored inline as data URLs, which is fine for a few
+    # photos and a disaster for a few hundred - a phone camera produces 4 MB
+    # images and the client is expected to downscale before sending.
+    kept = [p for p in (photos or []) if isinstance(p, str)][:3]
+    kept = [p for p in kept if len(p) <= 900_000]
+
+    if text.strip() or kept:
         _store({
             "id": f"web.{batch}.t",
             "from": reporter,
@@ -76,6 +82,7 @@ def submit(text: str, lat: float | None = None, lng: float | None = None,
             "text": {"body": text.strip()[:2000]},
             "_source": source,
             "_reported_by": reported_by,      # the operator's name, if any
+            "_photos": kept,
         }, reporter, "text")
 
     if lat is not None and lng is not None:

@@ -304,6 +304,7 @@ def submit_report(body: dict) -> dict:
             phone=str(body.get("phone", "")),
             source=str(body.get("source", "web")),
             reported_by=str(body.get("reported_by", "")),
+            photos=body.get("photos") or [],
         )
     except ValueError as err:
         raise HTTPException(422, str(err)) from err
