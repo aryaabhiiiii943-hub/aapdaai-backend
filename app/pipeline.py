@@ -43,6 +43,19 @@ def load_needs(use_llm: bool = False) -> list[Need]:
     # given and folded back in here.
     for need in needs:
         for slot, value in _conversation(need.reporter).get("answers", {}).items():
+            # ASKED, NEVER ANSWERED.
+            #
+            # Both the give-up path and the answered-by-another-route path
+            # record the slot with a value of None - the point being "we have
+            # already put this to them, don't ask again". That is a marker,
+            # not an answer, and it must not be folded into the report.
+            #
+            # Without this guard, `for d in value` on a None deficits marker
+            # raised TypeError inside respond_to, which is caught and logged -
+            # so the crash was silent and the person got NO REPLY AT ALL. One
+            # unanswered question broke every future message from that number.
+            if value is None:
+                continue
             if slot == "deficits":
                 for d in value:
                     if d not in need.deficits:

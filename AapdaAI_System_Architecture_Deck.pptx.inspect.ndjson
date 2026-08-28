@@ -1,0 +1,748 @@
+{"kind":"deck","id":"pr/gjyh3m","name":"Deck"}
+{"kind":"layout","layoutId":"1c304342-3bde-4c9d-8bd8-a9d482f7505b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"9819ecfc-2874-4891-8fea-a9c999e3fe88","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/zml9x4","slide":1,"title":"AAPDAAI","textShapes":10}
+{"kind":"textbox","id":"sh/8vmt0re5","slide":1,"text":"AAPDAAI","textPreview":"AAPDAAI","textChars":7,"textLines":1,"bbox":[64,82,650,90]}
+{"kind":"textbox","id":"sh/7uds7mdk","slide":1,"text":"From disaster report to actionable intelligence","textPreview":"From disaster report to actionable intelligence","textChars":47,"textLines":1,"bbox":[68,178,760,44]}
+{"kind":"shape","id":"sh/mt4byhwz","slide":1,"bbox":[68,248,520,0]}
+{"kind":"textbox","id":"sh/h0fadwvm","slide":1,"name":"CITIZEN","text":"CITIZEN\nperson","textPreview":"CITIZEN | person","textChars":14,"textLines":2,"bbox":[72,360,180,88]}
+{"kind":"shape","id":"sh/wz6t4re1","slide":1,"bbox":[72,360,5,88]}
+{"kind":"textbox","id":"sh/vyxsbmdg","slide":1,"name":"REPORT","text":"REPORT\nWhatsApp / web","textPreview":"REPORT | WhatsApp / web","textChars":21,"textLines":2,"bbox":[312,360,180,88]}
+{"kind":"shape","id":"sh/uxob2hwv","slide":1,"bbox":[312,360,5,88]}
+{"kind":"textbox","id":"sh/x4ba1cvi","slide":1,"name":"AAPDAAI","text":"AAPDAAI\nFastAPI + pipeline","textPreview":"AAPDAAI | FastAPI + pipeline","textChars":26,"textLines":2,"bbox":[552,360,200,88]}
+{"kind":"shape","id":"sh/c329s7ex","slide":1,"bbox":[552,360,5,88]}
+{"kind":"textbox","id":"sh/61kbalc7","slide":1,"name":"INTELLIGENCE","text":"INTELLIGENCE\nranked incidents","textPreview":"INTELLIGENCE | ranked incidents","textChars":29,"textLines":2,"bbox":[812,360,200,88]}
+{"kind":"shape","id":"sh/72ts3qds","slide":1,"bbox":[812,360,5,88]}
+{"kind":"textbox","id":"sh/s32tcvud","slide":1,"name":"DECISION","text":"DECISION\nhuman authority","textPreview":"DECISION | human authority","textChars":24,"textLines":2,"bbox":[1072,360,150,88]}
+{"kind":"shape","id":"sh/t4va50vy","slide":1,"bbox":[1072,360,5,88]}
+{"kind":"shape","id":"sh/u54be5c3","slide":1,"bbox":[252,404,60,0]}
+{"kind":"shape","id":"sh/f6ds7ado","slide":1,"bbox":[492,404,60,0]}
+{"kind":"shape","id":"sh/g7mt0fu9","slide":1,"bbox":[752,404,60,0]}
+{"kind":"shape","id":"sh/h8va9kvu","slide":1,"bbox":[1012,404,60,0]}
+{"kind":"textbox","id":"sh/294b2pcf","slide":1,"text":"A visual tour of the system we actually built","textPreview":"A visual tour of the system we actually built","textChars":45,"textLines":1,"bbox":[68,590,680,30]}
+{"kind":"textbox","id":"sh/3adsbad0","slide":1,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/zyxszuts","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/zml9x4","slide":1,"text":"Open with the promise: follow one report through the real code path and the dashboard.\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js"}
+{"kind":"slide","id":"sl/mf9g73","slide":2,"title":"01 / WHY THIS EXISTS","textShapes":14}
+{"kind":"textbox","id":"sh/lwza9ori","slide":2,"text":"01 / WHY THIS EXISTS","textPreview":"01 / WHY THIS EXISTS","textChars":20,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/y98ry98r","slide":2,"text":"Disaster information arrives as fragments","textPreview":"Disaster information arrives as fragments","textChars":41,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/jahs7e9c","slide":2,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/8za94jqt","slide":2,"name":"MESSAGE","text":"MESSAGE\n\"Flood near village\"","textPreview":"MESSAGE | \"Flood near village\"","textChars":28,"textLines":2,"bbox":[88,188,205,68]}
+{"kind":"shape","id":"sh/t0jadore","slide":2,"bbox":[88,188,5,68]}
+{"kind":"shape","id":"sh/6xsr2t8n","slide":2,"bbox":[208,270,1,1]}
+{"kind":"shape","id":"sh/7y1sbe98","slide":2,"bbox":[190.5,256,17.65,14.15]}
+{"kind":"textbox","id":"sh/g3at83q5","slide":2,"name":"MESSAGE","text":"MESSAGE\n\"Need food\"","textPreview":"MESSAGE | \"Need food\"","textChars":19,"textLines":2,"bbox":[328,188,205,68]}
+{"kind":"shape","id":"sh/h43ah8ra","slide":2,"bbox":[328,188,5,68]}
+{"kind":"shape","id":"sh/5w3ml4ja","slide":2,"bbox":[448,270,1,1]}
+{"kind":"shape","id":"sh/4vu5szi5","slide":2,"bbox":[430.5,256,17.65,14.15]}
+{"kind":"textbox","id":"sh/3al4ju1k","slide":2,"name":"MESSAGE","text":"MESSAGE\n\"Road blocked\"","textPreview":"MESSAGE | \"Road blocked\"","textChars":22,"textLines":2,"bbox":[568,188,205,68]}
+{"kind":"shape","id":"sh/i9c3q90z","slide":2,"bbox":[568,188,5,68]}
+{"kind":"shape","id":"sh/d0nmpojm","slide":2,"bbox":[688,270,1,1]}
+{"kind":"shape","id":"sh/czu5wji1","slide":2,"bbox":[670.5,256,17.65,14.15]}
+{"kind":"textbox","id":"sh/ryl4ne1g","slide":2,"name":"MESSAGE","text":"MESSAGE\n\"People stranded\"","textPreview":"MESSAGE | \"People stranded\"","textChars":25,"textLines":2,"bbox":[88,282,205,68]}
+{"kind":"shape","id":"sh/qxcnu90v","slide":2,"bbox":[88,282,5,68]}
+{"kind":"shape","id":"sh/t4jmtkji","slide":2,"bbox":[208,364,1,1]}
+{"kind":"shape","id":"sh/83alkfix","slide":2,"bbox":[190.5,350,17.65,14.15]}
+{"kind":"textbox","id":"sh/kne50fqt","slide":2,"name":"MESSAGE","text":"MESSAGE\n\"Medical help needed\"","textPreview":"MESSAGE | \"Medical help needed\"","textChars":29,"textLines":2,"bbox":[328,282,205,68]}
+{"kind":"shape","id":"sh/lonm9kry","slide":2,"bbox":[328,282,5,68]}
+{"kind":"textbox","id":"sh/ylcnyp8n","slide":2,"text":"SCATTERED","textPreview":"SCATTERED","textChars":9,"textLines":1,"bbox":[820,202,300,30]}
+{"kind":"textbox","id":"sh/zm547u98","slide":2,"text":"delayed","textPreview":"delayed","textChars":7,"textLines":1,"bbox":[820,254,300,30]}
+{"kind":"textbox","id":"sh/8be54zqp","slide":2,"text":"incomplete","textPreview":"incomplete","textChars":10,"textLines":1,"bbox":[820,298,300,30]}
+{"kind":"shape","id":"sh/9cnmd4ra","slide":2,"bbox":[970,340,0,82]}
+{"kind":"textbox","id":"sh/mpwn2p8j","slide":2,"name":"ONE OPERATIONAL PICTURE","text":"ONE OPERATIONAL PICTURE\nincident + confidence + need","textPreview":"ONE OPERATIONAL PICTURE | incident + confidence + need","textChars":52,"textLines":2,"bbox":[720,462,500,102]}
+{"kind":"shape","id":"sh/7q54bu94","slide":2,"bbox":[720,462,5,102]}
+{"kind":"textbox","id":"sh/wfy58zql","slide":2,"text":"The backend turns separate voices into one queue a decision maker can act on.","textPreview":"The backend turns separate voices into one queue a decision maker can act on.","textChars":77,"textLines":1,"bbox":[112,566,1000,32]}
+{"kind":"textbox","id":"sh/hg7mh4r6","slide":2,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/ra987ito","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/mf9g73","slide":2,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/models.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/incident.py"}
+{"kind":"slide","id":"sl/xvxvaa","slide":3,"title":"02 / THE BUILT SYSTEM","textShapes":13}
+{"kind":"textbox","id":"sh/8jm9ozil","slide":3,"text":"02 / THE BUILT SYSTEM","textPreview":"02 / THE BUILT SYSTEM","textChars":21,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/nit8fe10","slide":3,"text":"AapdaAI connects intake, reasoning, storage, and action","textPreview":"AapdaAI connects intake, reasoning, storage, and action","textChars":55,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/mhkrm90f","slide":3,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/h8valoj2","slide":3,"name":"CITIZEN","text":"CITIZEN\nWhatsApp / web form","textPreview":"CITIZEN | WhatsApp / web form","textChars":27,"textLines":2,"bbox":[80,260,170,88]}
+{"kind":"shape","id":"sh/w7m9sjih","slide":3,"bbox":[80,260,5,88]}
+{"kind":"textbox","id":"sh/v6d8je1c","slide":3,"name":"META","text":"META\nWhatsApp webhook","textPreview":"META | WhatsApp webhook","textChars":21,"textLines":2,"bbox":[300,260,190,88]}
+{"kind":"shape","id":"sh/ul4rq90r","slide":3,"bbox":[300,260,5,88]}
+{"kind":"textbox","id":"sh/dcbq9kjy","slide":3,"name":"BACKEND","text":"BACKEND\nFastAPI application","textPreview":"BACKEND | FastAPI application","textChars":27,"textLines":2,"bbox":[540,260,220,88]}
+{"kind":"shape","id":"sh/cbi9gfid","slide":3,"bbox":[540,260,5,88]}
+{"kind":"textbox","id":"sh/qpg7ih8v","slide":3,"name":"DATABASE","text":"DATABASE\nSQLite / Postgres","textPreview":"DATABASE | SQLite / Postgres","textChars":26,"textLines":2,"bbox":[812,180,190,88]}
+{"kind":"shape","id":"sh/rqporm9g","slide":3,"bbox":[812,180,5,88]}
+{"kind":"textbox","id":"sh/crypk7q1","slide":3,"name":"REST API","text":"REST API\nGET + POST + PATCH","textPreview":"REST API | GET + POST + PATCH","textChars":27,"textLines":2,"bbox":[812,340,190,88]}
+{"kind":"shape","id":"sh/ds76tcrm","slide":3,"bbox":[812,340,5,88]}
+{"kind":"textbox","id":"sh/ytg7mh87","slide":3,"name":"DASHBOARD","text":"DASHBOARD\nReact operator UI","textPreview":"DASHBOARD | React operator UI","textChars":27,"textLines":2,"bbox":[1048,260,170,88]}
+{"kind":"shape","id":"sh/zupovm9s","slide":3,"bbox":[1048,260,5,88]}
+{"kind":"shape","id":"sh/0fiporqx","slide":3,"bbox":[250,304,50,0]}
+{"kind":"shape","id":"sh/lgrqxwri","slide":3,"bbox":[490,304,50,0]}
+{"kind":"shape","id":"sh/mh07q183","slide":3,"bbox":[760,224,52,80]}
+{"kind":"shape","id":"sh/ni98z69o","slide":3,"bbox":[760,304,52,80]}
+{"kind":"shape","id":"sh/jmton65w","slide":3,"bbox":[1002,304,46,80]}
+{"kind":"shape","id":"sh/il0ne1ob","slide":3,"bbox":[760,304,288,0]}
+{"kind":"textbox","id":"sh/5ob6pwnm","slide":3,"text":"The same incident state powers triage, verification, dispatch, and follow-up.","textPreview":"The same incident state powers triage, verification, dispatch, and follow-up.","textChars":77,"textLines":1,"bbox":[132,498,1000,36]}
+{"kind":"textbox","id":"sh/kn25gb6h","slide":3,"text":"IMPLEMENTED","textPreview":"IMPLEMENTED","textChars":11,"textLines":1,"bbox":[540,570,200,30]}
+{"kind":"textbox","id":"sh/vi9ojm5k","slide":3,"text":"HUMAN-IN-THE-LOOP","textPreview":"HUMAN-IN-THE-LOOP","textChars":17,"textLines":1,"bbox":[760,570,240,30]}
+{"kind":"textbox","id":"sh/ah0nahoz","slide":3,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/xkr6lwnq","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/xvxvaa","slide":3,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js"}
+{"kind":"slide","id":"sl/ub4wb1","slide":4,"title":"03 / SYSTEM ARCHITECTURE","textShapes":15}
+{"kind":"textbox","id":"sh/zmd8zqt0","slide":4,"text":"03 / SYSTEM ARCHITECTURE","textPreview":"03 / SYSTEM ARCHITECTURE","textChars":24,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/0nmpsval","slide":4,"text":"The master map: two entry points, one pipeline","textPreview":"The master map: two entry points, one pipeline","textChars":46,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/1ovq1gb6","slide":4,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/qhk7m1cj","slide":4,"bbox":[70,160,1140,430]}
+{"kind":"textbox","id":"sh/rit8v6t4","slide":4,"text":"USERS","textPreview":"USERS","textChars":5,"textLines":1,"bbox":[94,184,100,24]}
+{"kind":"textbox","id":"sh/cj2pobup","slide":4,"name":"CITIZEN","text":"CITIZEN\nWhatsApp / web","textPreview":"CITIZEN | WhatsApp / web","textChars":22,"textLines":2,"bbox":[96,226,190,74]}
+{"kind":"shape","id":"sh/dkbqxgbu","slide":4,"bbox":[96,226,5,74]}
+{"kind":"textbox","id":"sh/2t07i1c7","slide":4,"name":"AUTHORITY","text":"AUTHORITY\nReact dashboard","textPreview":"AUTHORITY | React dashboard","textChars":25,"textLines":2,"bbox":[96,456,190,74]}
+{"kind":"shape","id":"sh/3utor6ts","slide":4,"bbox":[96,456,5,74]}
+{"kind":"textbox","id":"sh/biho7qtw","slide":4,"name":"INTAKE","text":"INTAKE\nPOST /webhook\nPOST /reports","textPreview":"INTAKE | POST /webhook | POST /reports","textChars":34,"textLines":3,"bbox":[350,226,210,74]}
+{"kind":"shape","id":"sh/ah87elsb","slide":4,"bbox":[350,226,5,74]}
+{"kind":"textbox","id":"sh/xkz69gb2","slide":4,"name":"PROCESSING","text":"PROCESSING\nextract -> cluster -> score","textPreview":"PROCESSING | extract -> cluster -> score","textChars":38,"textLines":2,"bbox":[620,226,250,74]}
+{"kind":"shape","id":"sh/wjqpgbah","slide":4,"bbox":[620,226,5,74]}
+{"kind":"textbox","id":"sh/j61obqt8","slide":4,"name":"STORAGE","text":"STORAGE\nraw + derived state","textPreview":"STORAGE | raw + derived state","textChars":27,"textLines":2,"bbox":[930,226,210,74]}
+{"kind":"shape","id":"sh/y587ilsn","slide":4,"bbox":[930,226,5,74]}
+{"kind":"textbox","id":"sh/l8j6d0by","slide":4,"name":"REST API","text":"REST API\nranked incidents + actions","textPreview":"REST API | ranked incidents + actions","textChars":35,"textLines":2,"bbox":[620,456,250,74]}
+{"kind":"shape","id":"sh/k7apkvad","slide":4,"bbox":[620,456,5,74]}
+{"kind":"shape","id":"sh/faxoz6to","slide":4,"bbox":[286,263,64,0]}
+{"kind":"shape","id":"sh/epon61c3","slide":4,"bbox":[560,263,60,0]}
+{"kind":"shape","id":"sh/i5wre9cr","slide":4,"bbox":[870,263,60,0]}
+{"kind":"shape","id":"sh/365snedc","slide":4,"bbox":[745,300,290,156]}
+{"kind":"shape","id":"sh/47e9gzux","slide":4,"bbox":[286,493,334,0]}
+{"kind":"shape","id":"sh/58nap4vi","slide":4,"bbox":[286,493,334,0]}
+{"kind":"textbox","id":"sh/u1crapcv","slide":4,"text":"app/main.py","textPreview":"app/main.py","textChars":11,"textLines":1,"bbox":[350,308,210,20]}
+{"kind":"textbox","id":"sh/v2lsjudg","slide":4,"text":"app/pipeline.py + app/compute.py","textPreview":"app/pipeline.py + app/compute.py","textChars":32,"textLines":1,"bbox":[620,308,250,20]}
+{"kind":"textbox","id":"sh/g3u9czul","slide":4,"text":"app/db.py","textPreview":"app/db.py","textChars":9,"textLines":1,"bbox":[930,308,210,20]}
+{"kind":"textbox","id":"sh/h43al4v6","slide":4,"text":"src/api.js + src/useIncidents.js","textPreview":"src/api.js + src/useIncidents.js","textChars":32,"textLines":1,"bbox":[620,540,250,20]}
+{"kind":"textbox","id":"sh/6dsr6pcj","slide":4,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/7el8fad4","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/ub4wb1","slide":4,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/pipeline.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js\n- C:/Users/KIIT/cowork/Aapda_AI/src/useIncidents.js"}
+{"kind":"slide","id":"sl/l9bbld","slide":5,"title":"04 / DATA JOURNEY","textShapes":21}
+{"kind":"textbox","id":"sh/zixsne5k","slide":5,"text":"04 / DATA JOURNEY","textPreview":"04 / DATA JOURNEY","textChars":17,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/0j6tgjm5","slide":5,"text":"One report travels through eight concrete steps","textPreview":"One report travels through eight concrete steps","textChars":47,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/lkfup4na","slide":5,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/mlobi94v","slide":5,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[76,182,44,32]}
+{"kind":"textbox","id":"sh/nmxcre5g","slide":5,"name":"Citizen","text":"Citizen\nmessage or form","textPreview":"Citizen | message or form","textChars":23,"textLines":2,"bbox":[124,180,205,76]}
+{"kind":"shape","id":"sh/8nqtkjm1","slide":5,"bbox":[124,180,5,76]}
+{"kind":"shape","id":"sh/9ozutonm","slide":5,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/2p4b6por","slide":5,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[361,182,44,32]}
+{"kind":"textbox","id":"sh/3qdsfu5c","slide":5,"name":"WhatsApp","text":"WhatsApp\ntext / pin / media","textPreview":"WhatsApp | text / pin / media","textChars":27,"textLines":2,"bbox":[409,180,205,76]}
+{"kind":"shape","id":"sh/bix4nado","slide":5,"bbox":[409,180,5,76]}
+{"kind":"shape","id":"sh/aho3u5w3","slide":5,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/x4fmp0vu","slide":5,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[646,182,44,32]}
+{"kind":"textbox","id":"sh/wj6lwve9","slide":5,"name":"Meta","text":"Meta\nHTTP webhook","textPreview":"Meta | HTTP webhook","textChars":17,"textLines":2,"bbox":[694,180,205,76]}
+{"kind":"shape","id":"sh/ned4jqxs","slide":5,"bbox":[694,180,5,76]}
+{"kind":"shape","id":"sh/md43qlw7","slide":5,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/9gvml0vy","slide":5,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[931,182,44,32]}
+{"kind":"textbox","id":"sh/ofmlsved","slide":5,"name":"Receive","text":"Receive\nPOST /webhook","textPreview":"Receive | POST /webhook","textChars":21,"textLines":2,"bbox":[979,180,205,76]}
+{"kind":"shape","id":"sh/zadkfqxg","slide":5,"bbox":[979,180,5,76]}
+{"kind":"textbox","id":"sh/e943mlwb","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[76,402,44,32]}
+{"kind":"textbox","id":"sh/2lknylg3","slide":5,"name":"Understand","text":"Understand\nextract.py","textPreview":"Understand | extract.py","textChars":21,"textLines":2,"bbox":[124,400,205,76]}
+{"kind":"shape","id":"sh/3mt4r6ho","slide":5,"bbox":[124,400,5,76]}
+{"kind":"shape","id":"sh/47250byt","slide":5,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/p8bmtgze","slide":5,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[361,402,44,32]}
+{"kind":"textbox","id":"sh/q94n2lgz","slide":5,"name":"Group","text":"Group\nincident.py","textPreview":"Group | incident.py","textChars":17,"textLines":2,"bbox":[409,400,205,76]}
+{"kind":"shape","id":"sh/rad4vqhk","slide":5,"bbox":[409,400,5,76]}
+{"kind":"shape","id":"sh/cbm54vy5","slide":5,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/dcvmx0zq","slide":5,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[646,402,44,32]}
+{"kind":"textbox","id":"sh/ed4n65gb","slide":5,"name":"Rank","text":"Rank\ncompute.py","textPreview":"Rank | compute.py","textChars":15,"textLines":2,"bbox":[694,400,205,76]}
+{"kind":"shape","id":"sh/zed4zqhw","slide":5,"bbox":[694,400,5,76]}
+{"kind":"shape","id":"sh/9kzylona","slide":5,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/8jqxcjmp","slide":5,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[931,402,44,32]}
+{"kind":"textbox","id":"sh/7ihgje54","slide":5,"name":"See","text":"See\ndashboard","textPreview":"See | dashboard","textChars":13,"textLines":2,"bbox":[979,400,205,76]}
+{"kind":"shape","id":"sh/mh8fat4j","slide":5,"bbox":[979,400,5,76]}
+{"kind":"textbox","id":"sh/h8jyp8n6","slide":5,"text":"Raw message in. Ranked, inspectable incident out.","textPreview":"Raw message in. Ranked, inspectable incident out.","textChars":49,"textLines":1,"bbox":[260,604,760,30]}
+{"kind":"textbox","id":"sh/wnahg3ml","slide":5,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/vm1gny50","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/l9bbld","slide":5,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/extract.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/incident.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/compute.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/useIncidents.js"}
+{"kind":"slide","id":"sl/rpnsgs","slide":6,"title":"05 / WHATSAPP -> BACKEND","textShapes":13}
+{"kind":"textbox","id":"sh/b6tsn6d8","slide":6,"text":"05 / WHATSAPP -> BACKEND","textPreview":"05 / WHATSAPP -> BACKEND","textChars":24,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/w7m9wbet","slide":6,"text":"The webhook is intentionally fast and narrow","textPreview":"The webhook is intentionally fast and narrow","textChars":44,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/x8vapgve","slide":6,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/y94ry1wz","slide":6,"name":"WHATSAPP","text":"WHATSAPP\nmessage + metadata","textPreview":"WHATSAPP | message + metadata","textChars":27,"textLines":2,"bbox":[88,240,200,86]}
+{"kind":"shape","id":"sh/judsr6dk","slide":6,"bbox":[88,240,5,86]}
+{"kind":"textbox","id":"sh/kvm90bep","slide":6,"name":"META","text":"META\ncallback request","textPreview":"META | callback request","textChars":21,"textLines":2,"bbox":[350,240,200,86]}
+{"kind":"shape","id":"sh/lwvatgva","slide":6,"bbox":[350,240,5,86]}
+{"kind":"textbox","id":"sh/6x4r2lwv","slide":6,"name":"GET /webhook","text":"GET /webhook\nverify()","textPreview":"GET /webhook | verify()","textChars":21,"textLines":2,"bbox":[612,190,220,72]}
+{"kind":"shape","id":"sh/7ydsvqdg","slide":6,"bbox":[612,190,5,72]}
+{"kind":"textbox","id":"sh/3mhw7qt4","slide":6,"name":"POST /webhook","text":"POST /webhook\nreceive()","textPreview":"POST /webhook | receive()","textChars":23,"textLines":2,"bbox":[612,304,220,72]}
+{"kind":"shape","id":"sh/il8fylcj","slide":6,"bbox":[612,304,5,72]}
+{"kind":"textbox","id":"sh/58ze90ba","slide":6,"name":"RAW STORAGE","text":"RAW STORAGE\nraw_messages","textPreview":"RAW STORAGE | raw_messages","textChars":24,"textLines":2,"bbox":[912,240,220,86]}
+{"kind":"shape","id":"sh/4nqx0vup","slide":6,"bbox":[912,240,5,86]}
+{"kind":"shape","id":"sh/vixw3qt8","slide":6,"bbox":[288,283,62,0]}
+{"kind":"shape","id":"sh/uhofulcn","slide":6,"bbox":[550,226,62,57]}
+{"kind":"shape","id":"sh/hkze5gbe","slide":6,"bbox":[550,283,62,57]}
+{"kind":"shape","id":"sh/gjqxwbut","slide":6,"bbox":[832,283,80,57]}
+{"kind":"textbox","id":"sh/fe1gfatc","slide":6,"text":"GET","textPreview":"GET","textChars":3,"textLines":1,"bbox":[464,180,90,22]}
+{"kind":"textbox","id":"sh/edsf65sr","slide":6,"text":"POST","textPreview":"POST","textChars":4,"textLines":1,"bbox":[464,324,90,22]}
+{"kind":"textbox","id":"sh/a9czy9cz","slide":6,"text":"Verification: hub.mode + hub.verify_token -> challenge","textPreview":"Verification: hub.mode + hub.verify_token -> challenge","textChars":54,"textLines":1,"bbox":[180,468,920,30]}
+{"kind":"textbox","id":"sh/ba507edk","slide":6,"text":"Receive path: filter our phone_number_id -> dedupe wa_message_id -> persist -> answer 200 -> background reply","textPreview":"Receive path: filter our phone_number_id -> dedupe wa_message_id -> persist -> answer 200 -> background reply","textChars":109,"textLines":1,"bbox":[120,520,1040,32]}
+{"kind":"textbox","id":"sh/cbeh0ju5","slide":6,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/xcni9ovq","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/rpnsgs","slide":6,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py"}
+{"kind":"slide","id":"sl/36jydv","slide":7,"title":"06 / PROCESSING PIPELINE","textShapes":15}
+{"kind":"textbox","id":"sh/wfy5wzy5","slide":7,"text":"06 / PROCESSING PIPELINE","textPreview":"06 / PROCESSING PIPELINE","textChars":24,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/veponux0","slide":7,"text":"Inside the backend, each stage has one job","textPreview":"Inside the backend, each stage has one job","textChars":42,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/adgnupgf","slide":7,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/9c76l4fu","slide":7,"name":"RECEIVE","text":"RECEIVE\nmain.receive()","textPreview":"RECEIVE | main.receive()","textChars":22,"textLines":2,"bbox":[86,258,160,90]}
+{"kind":"shape","id":"sh/8ry5szy9","slide":7,"bbox":[86,258,5,90]}
+{"kind":"textbox","id":"sh/nqpojuxo","slide":7,"name":"PARSE","text":"PARSE\nextract.parse()","textPreview":"PARSE | extract.parse()","textChars":21,"textLines":2,"bbox":[276,258,160,90]}
+{"kind":"shape","id":"sh/mpgnqpg3","slide":7,"bbox":[276,258,5,90]}
+{"kind":"shape","id":"sh/t8b6xofy","slide":7,"bbox":[246,303,30,0]}
+{"kind":"textbox","id":"sh/snip4jyd","slide":7,"name":"ENRICH","text":"ENRICH\nllm optional","textPreview":"ENRICH | llm optional","textChars":19,"textLines":2,"bbox":[466,258,160,90]}
+{"kind":"shape","id":"sh/u58velsz","slide":7,"bbox":[466,258,5,90]}
+{"kind":"shape","id":"sh/v6hcnqtk","slide":7,"bbox":[436,303,30,0]}
+{"kind":"textbox","id":"sh/g7qdgva5","slide":7,"name":"CLUSTER","text":"CLUSTER\nincident.cluster()","textPreview":"CLUSTER | incident.cluster()","textChars":26,"textLines":2,"bbox":[656,258,160,90]}
+{"kind":"shape","id":"sh/h8zup0ba","slide":7,"bbox":[656,258,5,90]}
+{"kind":"shape","id":"sh/61ovalcn","slide":7,"bbox":[626,303,30,0]}
+{"kind":"textbox","id":"sh/72xcjqt8","slide":7,"name":"SCORE","text":"SCORE\ncompute.brief()","textPreview":"SCORE | compute.brief()","textChars":21,"textLines":2,"bbox":[846,258,160,90]}
+{"kind":"shape","id":"sh/836dcbat","slide":7,"bbox":[846,258,5,90]}
+{"kind":"shape","id":"sh/t4zulgbe","slide":7,"bbox":[816,303,30,0]}
+{"kind":"textbox","id":"sh/qxsvm5s7","slide":7,"name":"RESPOND","text":"RESPOND\nnotify / follow-up","textPreview":"RESPOND | notify / follow-up","textChars":26,"textLines":2,"bbox":[1036,258,160,90]}
+{"kind":"shape","id":"sh/ry1wvats","slide":7,"bbox":[1036,258,5,90]}
+{"kind":"shape","id":"sh/n690ri5s","slide":7,"bbox":[1006,303,30,0]}
+{"kind":"textbox","id":"sh/250jyd47","slide":7,"text":"Rules parser first. AI is an optional extraction helper, never the urgency judge.","textPreview":"Rules parser first. AI is an optional extraction helper, never the urgency judge.","textChars":81,"textLines":1,"bbox":[150,458,980,34]}
+{"kind":"textbox","id":"sh/p8bit8ny","slide":7,"text":"FASTAPI","textPreview":"FASTAPI","textChars":7,"textLines":1,"bbox":[212,540,120,30]}
+{"kind":"textbox","id":"sh/o72103md","slide":7,"text":"PYTHON","textPreview":"PYTHON","textChars":6,"textLines":1,"bbox":[360,540,120,30]}
+{"kind":"textbox","id":"sh/but0vi5o","slide":7,"text":"BACKGROUND TASKS","textPreview":"BACKGROUND TASKS","textChars":16,"textLines":1,"bbox":[508,540,220,30]}
+{"kind":"textbox","id":"sh/a9kj2d4j","slide":7,"text":"HUMAN DECISION","textPreview":"HUMAN DECISION","textChars":14,"textLines":1,"bbox":[756,540,190,30]}
+{"kind":"textbox","id":"sh/xwb2xsnu","slide":7,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/cv214nm9","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/36jydv","slide":7,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/extract.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/llm.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/incident.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/compute.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/pipeline.py"}
+{"kind":"slide","id":"sl/e9jxaf","slide":8,"title":"07 / DATA TRANSFORMATION","textShapes":15}
+{"kind":"textbox","id":"sh/ba1szyh8","slide":8,"text":"07 / DATA TRANSFORMATION","textPreview":"07 / DATA TRANSFORMATION","textChars":24,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/cbat83yt","slide":8,"text":"The pipeline converts an unstructured message into an actionable record","textPreview":"The pipeline converts an unstructured message into an actionable record","textChars":71,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/xcja18zy","slide":8,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/ydsbadgj","slide":8,"name":"RAW INPUT","text":"RAW INPUT\nWhatsApp JSON\ntext / location / media","textPreview":"RAW INPUT | WhatsApp JSON | text / location / media","textChars":47,"textLines":3,"bbox":[74,228,260,132]}
+{"kind":"shape","id":"sh/ze1s3ih4","slide":8,"bbox":[74,228,5,132]}
+{"kind":"textbox","id":"sh/kzutcnyp","slide":8,"name":"PARSED NEED","text":"PARSED NEED\nNeed dataclass\nplace + people + deficits","textPreview":"PARSED NEED | Need dataclass | place + people + deficits","textChars":52,"textLines":3,"bbox":[424,228,260,132]}
+{"kind":"shape","id":"sh/l03a5sza","slide":8,"bbox":[424,228,5,132]}
+{"kind":"textbox","id":"sh/m1cbexgv","slide":8,"name":"INCIDENT","text":"INCIDENT\nclustered event\nconfirmation + response","textPreview":"INCIDENT | clustered event | confirmation + response","textChars":48,"textLines":3,"bbox":[774,228,260,132]}
+{"kind":"shape","id":"sh/72ls72hg","slide":8,"bbox":[774,228,5,132]}
+{"kind":"shape","id":"sh/3ixczu1g","slide":8,"bbox":[334,294,90,0]}
+{"kind":"shape","id":"sh/ihov6p0v","slide":8,"bbox":[684,294,90,0]}
+{"kind":"textbox","id":"sh/5kzu14j6","slide":8,"text":"Example fields","textPreview":"Example fields","textChars":14,"textLines":1,"bbox":[114,438,190,24]}
+{"kind":"textbox","id":"sh/4j6d8zil","slide":8,"text":"lat / lng","textPreview":"lat / lng","textChars":9,"textLines":1,"bbox":[114,480,132,30]}
+{"kind":"textbox","id":"sh/vexcva14","slide":8,"text":"headcount","textPreview":"headcount","textChars":9,"textLines":1,"bbox":[264,480,132,30]}
+{"kind":"textbox","id":"sh/udov250j","slide":8,"text":"injured / trapped","textPreview":"injured / trapped","textChars":17,"textLines":1,"bbox":[414,480,132,30]}
+{"kind":"textbox","id":"sh/hgfuxkja","slide":8,"text":"deficits","textPreview":"deficits","textChars":8,"textLines":1,"bbox":[114,524,132,30]}
+{"kind":"textbox","id":"sh/wf6d4fip","slide":8,"text":"hazard","textPreview":"hazard","textChars":6,"textLines":1,"bbox":[264,524,132,30]}
+{"kind":"textbox","id":"sh/fahw7eh8","slide":8,"text":"vulnerable","textPreview":"vulnerable","textChars":10,"textLines":1,"bbox":[414,524,132,30]}
+{"kind":"textbox","id":"sh/e98ve903","slide":8,"text":"If location or substance is missing, it becomes a follow-up instead of a fake red dot.","textPreview":"If location or substance is missing, it becomes a follow-up instead of a fake red dot.","textChars":86,"textLines":1,"bbox":[760,454,390,84]}
+{"kind":"textbox","id":"sh/ahw7mxo7","slide":8,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/bi5ov25s","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/e9jxaf","slide":8,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/models.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/extract.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/incident.py"}
+{"kind":"slide","id":"sl/2dtr9z","slide":9,"title":"08 / DATABASE","textShapes":12}
+{"kind":"textbox","id":"sh/v2xgrqp0","slide":9,"text":"08 / DATABASE","textPreview":"08 / DATABASE","textChars":13,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/g36xkvql","slide":9,"text":"Storage keeps the raw evidence and the operational state together","textPreview":"Storage keeps the raw evidence and the operational state together","textChars":65,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/hofyt076","slide":9,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/ipofm58b","slide":9,"name":"DATABASE","text":"DATABASE\nSQLite locally\nPostgres on Render","textPreview":"DATABASE | SQLite locally | Postgres on Render","textChars":42,"textLines":3,"bbox":[500,158,280,86]}
+{"kind":"shape","id":"sh/3qhgvapw","slide":9,"bbox":[500,158,5,86]}
+{"kind":"textbox","id":"sh/4rqxovqh","slide":9,"name":"raw_messages","text":"raw_messages\noriginal payload + dedup key","textPreview":"raw_messages | original payload + dedup key","textChars":41,"textLines":2,"bbox":[110,330,220,70]}
+{"kind":"shape","id":"sh/5szyx072","slide":9,"bbox":[110,330,5,70]}
+{"kind":"textbox","id":"sh/qt8fq58n","slide":9,"name":"conversations","text":"conversations\nquestion / answer state","textPreview":"conversations | question / answer state","textChars":37,"textLines":2,"bbox":[390,330,220,70]}
+{"kind":"shape","id":"sh/ruhgzap8","slide":9,"bbox":[390,330,5,70]}
+{"kind":"textbox","id":"sh/jqlsf29w","slide":9,"name":"incidents","text":"incidents\ncluster + lifecycle state","textPreview":"incidents | cluster + lifecycle state","textChars":35,"textLines":2,"bbox":[670,330,220,70]}
+{"kind":"shape","id":"sh/ypcbmh8b","slide":9,"bbox":[670,330,5,70]}
+{"kind":"textbox","id":"sh/ls3uhcrm","slide":9,"name":"resources","text":"resources\nunit inventory + status","textPreview":"resources | unit inventory + status","textChars":33,"textLines":2,"bbox":[950,330,220,70]}
+{"kind":"shape","id":"sh/kruto7qh","slide":9,"bbox":[950,330,5,70]}
+{"kind":"textbox","id":"sh/b2lsb29k","slide":9,"name":"verifications","text":"verifications\nnamed human decisions","textPreview":"verifications | named human decisions","textChars":35,"textLines":2,"bbox":[250,500,220,70]}
+{"kind":"shape","id":"sh/a1cbix8z","slide":9,"bbox":[250,500,5,70]}
+{"kind":"textbox","id":"sh/xo3adcrq","slide":9,"name":"assignments","text":"assignments\nunit -> incident commit","textPreview":"assignments | unit -> incident commit","textChars":35,"textLines":2,"bbox":[530,500,220,70]}
+{"kind":"shape","id":"sh/wnutk7q5","slide":9,"bbox":[530,500,5,70]}
+{"kind":"textbox","id":"sh/vy5cn694","slide":9,"name":"arrival_checks","text":"arrival_checks\ndid help reach them?","textPreview":"arrival_checks | did help reach them?","textChars":35,"textLines":2,"bbox":[810,500,220,70]}
+{"kind":"shape","id":"sh/uxwbu18j","slide":9,"bbox":[810,500,5,70]}
+{"kind":"shape","id":"sh/qd0vm5sr","slide":9,"bbox":[220,244,420,86]}
+{"kind":"shape","id":"sh/re9wvqtc","slide":9,"bbox":[500,244,140,86]}
+{"kind":"shape","id":"sh/sfixovah","slide":9,"bbox":[640,244,140,86]}
+{"kind":"shape","id":"sh/dgrex0b2","slide":9,"bbox":[640,244,420,86]}
+{"kind":"shape","id":"sh/eh0fq5sn","slide":9,"bbox":[360,244,280,256]}
+{"kind":"shape","id":"sh/fi9wzat8","slide":9,"bbox":[640,244,0,256]}
+{"kind":"shape","id":"sh/0j2xsfat","slide":9,"bbox":[640,244,280,256]}
+{"kind":"textbox","id":"sh/1kbe1kbe","slide":9,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/ulgve1sj","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/2dtr9z","slide":9,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/store.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/resources.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/assistance.py"}
+{"kind":"slide","id":"sl/xstsvq","slide":10,"title":"09 / BACKEND <-> FRONTEND","textShapes":14}
+{"kind":"textbox","id":"sh/tw7ilsvy","slide":10,"text":"09 / BACKEND <-> FRONTEND","textPreview":"09 / BACKEND <-> FRONTEND","textChars":25,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/6tgzqdwn","slide":10,"text":"The frontend is a thin client over the backend contract","textPreview":"The frontend is a thin client over the backend contract","textChars":55,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/7up0jid8","slide":10,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/gzy1wnep","slide":10,"name":"REACT UI","text":"REACT UI\nApp.jsx + operator components","textPreview":"REACT UI | App.jsx + operator components","textChars":38,"textLines":2,"bbox":[94,244,260,100]}
+{"kind":"shape","id":"sh/h0ripsva","slide":10,"bbox":[94,244,5,100]}
+{"kind":"textbox","id":"sh/uxgzudwj","slide":10,"name":"API ADAPTER","text":"API ADAPTER\nsrc/api.js\nVITE_API_URL","textPreview":"API ADAPTER | src/api.js | VITE_API_URL","textChars":35,"textLines":3,"bbox":[510,244,260,100]}
+{"kind":"shape","id":"sh/fyp0nid4","slide":10,"bbox":[510,244,5,100]}
+{"kind":"textbox","id":"sh/43i107el","slide":10,"name":"FASTAPI","text":"FASTAPI\napp/main.py\nREST routes","textPreview":"FASTAPI | app/main.py | REST routes","textChars":31,"textLines":3,"bbox":[926,244,260,100]}
+{"kind":"shape","id":"sh/poritcv6","slide":10,"bbox":[926,244,5,100]}
+{"kind":"shape","id":"sh/9wbydgv2","slide":10,"bbox":[354,294,156,0]}
+{"kind":"shape","id":"sh/8v2hkbeh","slide":10,"bbox":[770,294,156,0]}
+{"kind":"shape","id":"sh/7utgb6dw","slide":10,"bbox":[770,294,156,0]}
+{"kind":"shape","id":"sh/mtkzi1wb","slide":10,"bbox":[354,294,156,0]}
+{"kind":"textbox","id":"sh/hkvyhgvy","slide":10,"text":"GET /incidents","textPreview":"GET /incidents","textChars":14,"textLines":1,"bbox":[118,470,230,30]}
+{"kind":"textbox","id":"sh/wjmhoved","slide":10,"text":"GET /stats","textPreview":"GET /stats","textChars":10,"textLines":1,"bbox":[388,470,230,30]}
+{"kind":"textbox","id":"sh/vidgfqd8","slide":10,"text":"GET /follow-ups","textPreview":"GET /follow-ups","textChars":15,"textLines":1,"bbox":[658,470,230,30]}
+{"kind":"textbox","id":"sh/uh4zmlwn","slide":10,"text":"POST /reports","textPreview":"POST /reports","textChars":13,"textLines":1,"bbox":[928,470,230,30]}
+{"kind":"textbox","id":"sh/xory5wvu","slide":10,"text":"POST /verify","textPreview":"POST /verify","textChars":12,"textLines":1,"bbox":[118,516,230,30]}
+{"kind":"textbox","id":"sh/cnihcre9","slide":10,"text":"POST /assign","textPreview":"POST /assign","textChars":12,"textLines":1,"bbox":[388,516,230,30]}
+{"kind":"textbox","id":"sh/oj6p8vqh","slide":10,"text":"POST /check-arrival","textPreview":"POST /check-arrival","textChars":19,"textLines":1,"bbox":[658,516,230,30]}
+{"kind":"textbox","id":"sh/pkfqh072","slide":10,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/2ho76l8b","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/xstsvq","slide":10,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js\n- C:/Users/KIIT/cowork/Aapda_AI/src/useIncidents.js\n- C:/Users/KIIT/cowork/Aapda_AI/src/OperatorActions.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/TriageQueue.jsx\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py"}
+{"kind":"slide","id":"sl/szg2sj","slide":11,"title":"10 / FRONTEND ARCHITECTURE","textShapes":11}
+{"kind":"textbox","id":"sh/10radwb6","slide":11,"text":"10 / FRONTEND ARCHITECTURE","textPreview":"10 / FRONTEND ARCHITECTURE","textChars":26,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/exgr2hcf","slide":11,"text":"The dashboard is organized around the operator workflow","textPreview":"The dashboard is organized around the operator workflow","textChars":55,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/fypsbmt0","slide":11,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/svy90rup","slide":11,"name":"APP SHELL","text":"APP SHELL\nsrc/App.jsx","textPreview":"APP SHELL | src/App.jsx","textChars":21,"textLines":2,"bbox":[500,160,280,74]}
+{"kind":"shape","id":"sh/dw7a9cba","slide":11,"bbox":[500,160,5,74]}
+{"kind":"textbox","id":"sh/69gryhcj","slide":11,"name":"TRIAGE QUEUE","text":"TRIAGE QUEUE\nTriageQueue.jsx","textPreview":"TRIAGE QUEUE | TriageQueue.jsx","textChars":28,"textLines":2,"bbox":[120,330,240,80]}
+{"kind":"shape","id":"sh/rups7mt4","slide":11,"bbox":[120,330,5,80]}
+{"kind":"textbox","id":"sh/47e9w7ud","slide":11,"name":"OPERATOR ACTIONS","text":"OPERATOR ACTIONS\nOperatorActions.jsx","textPreview":"OPERATOR ACTIONS | OperatorActions.jsx","textChars":36,"textLines":2,"bbox":[402,330,240,80]}
+{"kind":"shape","id":"sh/58na5cby","slide":11,"bbox":[402,330,5,80]}
+{"kind":"textbox","id":"sh/50n29436","slide":11,"name":"ASSISTANCE","text":"ASSISTANCE\nAssistancePanel.jsx","textPreview":"ASSISTANCE | AssistancePanel.jsx","textChars":30,"textLines":2,"bbox":[684,330,240,80]}
+{"kind":"shape","id":"sh/4zelgzml","slide":11,"bbox":[684,330,5,80]}
+{"kind":"textbox","id":"sh/3y5k7ul0","slide":11,"name":"MAP","text":"MAP\nIncidentMap.jsx","textPreview":"MAP | IncidentMap.jsx","textChars":19,"textLines":2,"bbox":[966,330,190,80]}
+{"kind":"shape","id":"sh/ixw3e94f","slide":11,"bbox":[966,330,5,80]}
+{"kind":"textbox","id":"sh/hwn2543u","slide":11,"name":"API LAYER","text":"API LAYER\nsrc/api.js","textPreview":"API LAYER | src/api.js","textChars":20,"textLines":2,"bbox":[500,522,280,74]}
+{"kind":"shape","id":"sh/gvelczm9","slide":11,"bbox":[500,522,5,74]}
+{"kind":"shape","id":"sh/vulk3ulo","slide":11,"bbox":[240,234,400,96]}
+{"kind":"shape","id":"sh/utc3ap4j","slide":11,"bbox":[522,234,118,96]}
+{"kind":"shape","id":"sh/ts321k3y","slide":11,"bbox":[640,234,164,96]}
+{"kind":"shape","id":"sh/8rul8fmd","slide":11,"bbox":[640,234,421,96]}
+{"kind":"shape","id":"sh/kbylofu9","slide":11,"bbox":[240,410,400,112]}
+{"kind":"shape","id":"sh/lc72xkbu","slide":11,"bbox":[522,410,118,112]}
+{"kind":"shape","id":"sh/y9g3mpc3","slide":11,"bbox":[640,410,164,112]}
+{"kind":"textbox","id":"sh/zapkvuto","slide":11,"text":"MAP COMPONENT EXISTS; LIVE WIRING IS PARTIAL","textPreview":"MAP COMPONENT EXISTS; LIVE WIRING IS PARTIAL","textChars":44,"textLines":1,"bbox":[918,522,270,30]}
+{"kind":"textbox","id":"sh/c7elkfux","slide":11,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/x8n2tkbi","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/szg2sj","slide":11,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/TriageQueue.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/OperatorActions.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/AssistancePanel.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/IncidentMap.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js"}
+{"kind":"slide","id":"sl/dsilox","slide":12,"title":"11 / DECISION VIEW","textShapes":18}
+{"kind":"textbox","id":"sh/z2lwzu1s","slide":12,"text":"11 / DECISION VIEW","textPreview":"11 / DECISION VIEW","textChars":18,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/03uxszix","slide":12,"text":"The operator sees urgency, uncertainty, and the next action together","textPreview":"The operator sees urgency, uncertainty, and the next action together","textChars":68,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/143e14ji","slide":12,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/m5cfup03","slide":12,"bbox":[90,166,1100,410]}
+{"kind":"textbox","id":"sh/n6lw3u1o","slide":12,"text":"AAPDAAI CONTROL ROOM","textPreview":"AAPDAAI CONTROL ROOM","textChars":20,"textLines":1,"bbox":[122,192,460,28]}
+{"kind":"textbox","id":"sh/o7exwzi9","slide":12,"text":"TRIAGE","textPreview":"TRIAGE","textChars":6,"textLines":1,"bbox":[900,188,110,30]}
+{"kind":"textbox","id":"sh/9sne54ju","slide":12,"text":"LIVE","textPreview":"LIVE","textChars":4,"textLines":1,"bbox":[1026,188,110,30]}
+{"kind":"shape","id":"sh/29svi5kz","slide":12,"bbox":[122,248,220,80]}
+{"kind":"textbox","id":"sh/3a1wra1k","slide":12,"text":"INCIDENTS","textPreview":"INCIDENTS","textChars":9,"textLines":1,"bbox":[138,264,185,20]}
+{"kind":"textbox","id":"sh/felo7q94","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[138,288,185,30]}
+{"kind":"shape","id":"sh/edcnylsj","slide":12,"bbox":[374,248,220,80]}
+{"kind":"textbox","id":"sh/1gn690ra","slide":12,"text":"CRITICAL","textPreview":"CRITICAL","textChars":8,"textLines":1,"bbox":[390,264,185,20]}
+{"kind":"textbox","id":"sh/0fu50vap","slide":12,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[390,288,185,30]}
+{"kind":"shape","id":"sh/ralo369s","slide":12,"bbox":[626,248,220,80]}
+{"kind":"textbox","id":"sh/6pcnulsn","slide":12,"text":"PEOPLE AFFECTED","textPreview":"PEOPLE AFFECTED","textChars":15,"textLines":1,"bbox":[642,264,185,20]}
+{"kind":"textbox","id":"sh/tc365gry","slide":12,"text":"248","textPreview":"248","textChars":3,"textLines":1,"bbox":[642,288,185,30]}
+{"kind":"shape","id":"sh/sbu5wbad","slide":12,"bbox":[878,248,220,80]}
+{"kind":"textbox","id":"sh/jm1oz69w","slide":12,"text":"UNASSISTED","textPreview":"UNASSISTED","textChars":10,"textLines":1,"bbox":[894,264,185,20]}
+{"kind":"textbox","id":"sh/ilsnq1sb","slide":12,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[894,288,185,30]}
+{"kind":"textbox","id":"sh/mh8721c3","slide":12,"name":"P1 / FLOOD","text":"P1 / FLOOD\nPatia Govt School\n200 people - needs rescue","textPreview":"P1 / FLOOD | Patia Govt School | 200 people - needs rescue","textChars":54,"textLines":3,"bbox":[122,370,430,112]}
+{"kind":"shape","id":"sh/7i1ob6do","slide":12,"bbox":[122,370,5,112]}
+{"kind":"textbox","id":"sh/8jap4bu9","slide":12,"name":"SEVERITY 82","text":"SEVERITY 82\nCONFIDENCE 64\n3 independent reports","textPreview":"SEVERITY 82 | CONFIDENCE 64 | 3 independent reports","textChars":47,"textLines":3,"bbox":[590,370,250,112]}
+{"kind":"shape","id":"sh/9kj6dgvu","slide":12,"bbox":[590,370,5,112]}
+{"kind":"textbox","id":"sh/uls761cf","slide":12,"name":"NEXT ACTION","text":"NEXT ACTION\nverify -> dispatch nearest unit","textPreview":"NEXT ACTION | verify -> dispatch nearest unit","textChars":43,"textLines":2,"bbox":[878,370,258,112]}
+{"kind":"shape","id":"sh/vm1of6d0","slide":12,"bbox":[878,370,5,112]}
+{"kind":"shape","id":"sh/wnap8bul","slide":12,"bbox":[552,426,38,0]}
+{"kind":"shape","id":"sh/hoj6hgvq","slide":12,"bbox":[840,426,38,0]}
+{"kind":"textbox","id":"sh/i9c7alcb","slide":12,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/jal8jqdw","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/dsilox","slide":12,"text":"The numbers here are illustrative UI values, not a live snapshot; the point is the information shape the real dashboard surfaces.\n\n[Sources]\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/TriageQueue.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/OperatorActions.jsx\n- C:/Users/KIIT/cowork/aapdaai-backend/app/compute.py"}
+{"kind":"slide","id":"sl/kivs4l","slide":13,"title":"12 / HERO WORKFLOW","textShapes":17}
+{"kind":"textbox","id":"sh/zmxgjedo","slide":13,"text":"12 / HERO WORKFLOW","textPreview":"12 / HERO WORKFLOW","textChars":18,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/kn6xsje9","slide":13,"text":"Follow the data: one message becomes one accountable decision","textPreview":"Follow the data: one message becomes one accountable decision","textChars":61,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/lofylove","slide":13,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/ax4fmpwr","slide":13,"name":"CITIZEN","text":"CITIZEN\nmessage","textPreview":"CITIZEN | message","textChars":15,"textLines":2,"bbox":[72,282,120,86]}
+{"kind":"shape","id":"sh/bydgfudc","slide":13,"bbox":[72,282,5,86]}
+{"kind":"textbox","id":"sh/czmxozex","slide":13,"name":"META","text":"META\nWhatsApp","textPreview":"META | WhatsApp","textChars":13,"textLines":2,"bbox":[217,282,120,86]}
+{"kind":"shape","id":"sh/xkvyh4vi","slide":13,"bbox":[217,282,5,86]}
+{"kind":"shape","id":"sh/ut8zytwb","slide":13,"bbox":[192,325,25,0]}
+{"kind":"textbox","id":"sh/vuhgrydw","slide":13,"name":"WEBHOOK","text":"WEBHOOK\nreceive()","textPreview":"WEBHOOK | receive()","textChars":17,"textLines":2,"bbox":[362,282,120,86]}
+{"kind":"shape","id":"sh/ruhkjuh0","slide":13,"bbox":[362,282,5,86]}
+{"kind":"shape","id":"sh/qto3qpgf","slide":13,"bbox":[337,325,25,0]}
+{"kind":"textbox","id":"sh/dwz2lkzq","slide":13,"name":"PIPELINE","text":"PIPELINE\nparse + cluster","textPreview":"PIPELINE | parse + cluster","textChars":24,"textLines":2,"bbox":[507,282,120,86]}
+{"kind":"shape","id":"sh/cvqlszyl","slide":13,"bbox":[507,282,5,86]}
+{"kind":"shape","id":"sh/zihknuhw","slide":13,"bbox":[482,325,25,0]}
+{"kind":"textbox","id":"sh/eh83upgb","slide":13,"name":"DATABASE","text":"DATABASE\npersist","textPreview":"DATABASE | persist","textChars":16,"textLines":2,"bbox":[652,282,120,86]}
+{"kind":"shape","id":"sh/1kz2p4z2","slide":13,"bbox":[652,282,5,86]}
+{"kind":"shape","id":"sh/0jqlwzyh","slide":13,"bbox":[627,325,25,0]}
+{"kind":"textbox","id":"sh/nm1kreh8","slide":13,"name":"API","text":"API\nbriefs","textPreview":"API | briefs","textChars":10,"textLines":2,"bbox":[797,282,120,86]}
+{"kind":"shape","id":"sh/mls3y9gn","slide":13,"bbox":[797,282,5,86]}
+{"kind":"shape","id":"sh/yhcnqd0v","slide":13,"bbox":[772,325,25,0]}
+{"kind":"textbox","id":"sh/jiloji1g","slide":13,"name":"DASHBOARD","text":"DASHBOARD\ntriage","textPreview":"DASHBOARD | triage","textChars":16,"textLines":2,"bbox":[942,282,120,86]}
+{"kind":"shape","id":"sh/kju5snil","slide":13,"bbox":[942,282,5,86]}
+{"kind":"shape","id":"sh/lkn6l8j6","slide":13,"bbox":[917,325,25,0]}
+{"kind":"textbox","id":"sh/adcnmt0j","slide":13,"name":"DECISION","text":"DECISION\nverify / assign","textPreview":"DECISION | verify / assign","textChars":24,"textLines":2,"bbox":[1087,282,120,86]}
+{"kind":"shape","id":"sh/belofy14","slide":13,"bbox":[1087,282,5,86]}
+{"kind":"shape","id":"sh/wfu5o3ip","slide":13,"bbox":[1062,325,25,0]}
+{"kind":"textbox","id":"sh/xg36h8ja","slide":13,"text":"The important design choice: recommendations are visible, but authority stays with the named human.","textPreview":"The important design choice: recommendations are visible, but authority stays with the named human.","textChars":99,"textLines":1,"bbox":[170,470,940,48]}
+{"kind":"textbox","id":"sh/u9wnyx03","slide":13,"text":"SEVERITY","textPreview":"SEVERITY","textChars":8,"textLines":1,"bbox":[294,558,130,30]}
+{"kind":"textbox","id":"sh/va5or218","slide":13,"text":"CONFIDENCE","textPreview":"CONFIDENCE","textChars":10,"textLines":1,"bbox":[444,558,150,30]}
+{"kind":"textbox","id":"sh/pgridg7m","slide":13,"text":"RESOURCE MATCH","textPreview":"RESOURCE MATCH","textChars":14,"textLines":1,"bbox":[614,558,180,30]}
+{"kind":"textbox","id":"sh/ofih4b6h","slide":13,"text":"AUDIT HISTORY","textPreview":"AUDIT HISTORY","textChars":13,"textLines":1,"bbox":[814,558,170,30]}
+{"kind":"textbox","id":"sh/3e90bqpw","slide":13,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/2d0z2lob","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/kivs4l","slide":13,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/pipeline.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/compute.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/store.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js"}
+{"kind":"slide","id":"sl/k5kca3","slide":14,"title":"13 / DEPLOYMENT","textShapes":10}
+{"kind":"textbox","id":"sh/sjy9gzml","slide":14,"text":"13 / DEPLOYMENT","textPreview":"13 / DEPLOYMENT","textChars":15,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/7ip87u50","slide":14,"text":"Deployment puts the backend on a public URL and keeps data in Postgres","textPreview":"Deployment puts the backend on a public URL and keeps data in Postgres","textChars":70,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/6hg7ep4f","slide":14,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/horqd4n2","slide":14,"name":"INTERNET","text":"INTERNET\nbrowser + Meta","textPreview":"INTERNET | browser + Meta","textChars":23,"textLines":2,"bbox":[500,156,280,70]}
+{"kind":"shape","id":"sh/gni9kzmh","slide":14,"bbox":[500,156,5,70]}
+{"kind":"textbox","id":"sh/fmp8bu5w","slide":14,"name":"RENDER STATIC SITE","text":"RENDER STATIC SITE\nReact dashboard","textPreview":"RENDER STATIC SITE | React dashboard","textChars":34,"textLines":2,"bbox":[110,300,260,86]}
+{"kind":"shape","id":"sh/ulgri94r","slide":14,"bbox":[110,300,5,86]}
+{"kind":"textbox","id":"sh/xsnq1kny","slide":14,"name":"RENDER WEB SERVICE","text":"RENDER WEB SERVICE\naapdaai-backend\nuvicorn app.main:app","textPreview":"RENDER WEB SERVICE | aapdaai-backend | uvicorn app.main:app","textChars":55,"textLines":3,"bbox":[510,300,280,86]}
+{"kind":"shape","id":"sh/wrep8f6d","slide":14,"bbox":[510,300,5,86]}
+{"kind":"textbox","id":"sh/m1kbepcv","slide":14,"name":"RENDER POSTGRES","text":"RENDER POSTGRES\naapdaai-db","textPreview":"RENDER POSTGRES | aapdaai-db","textChars":26,"textLines":2,"bbox":[930,300,240,86]}
+{"kind":"shape","id":"sh/72tc7udg","slide":14,"bbox":[930,300,5,86]}
+{"kind":"shape","id":"sh/832dgzul","slide":14,"bbox":[240,226,400,74]}
+{"kind":"shape","id":"sh/94bu9kv6","slide":14,"bbox":[640,226,10,74]}
+{"kind":"shape","id":"sh/u5kvipcr","slide":14,"bbox":[790,343,140,0]}
+{"kind":"shape","id":"sh/v6tcbudc","slide":14,"bbox":[640,226,10,74]}
+{"kind":"textbox","id":"sh/wr2dkzux","slide":14,"text":"Free-tier reality","textPreview":"Free-tier reality","textChars":17,"textLines":1,"bbox":[110,480,220,24]}
+{"kind":"textbox","id":"sh/hsvud4vi","slide":14,"text":"The service sleeps after idle time. Warm it before the demo.\nSQLite is local fallback; Render is configured for Postgres.","textPreview":"The service sleeps after idle time. Warm it before the demo. | SQLite is local fallback; Render is configured for Postgres.","textChars":121,"textLines":2,"bbox":[110,514,980,56]}
+{"kind":"textbox","id":"sh/it4vm9c3","slide":14,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/judcfed8","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/k5kca3","slide":14,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/render.yaml\n- C:/Users/KIIT/cowork/Aapda_AI/DEPLOY.md\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py"}
+{"kind":"slide","id":"sl/jksnxi","slide":15,"title":"14 / DEVELOPMENT VS PRODUCTION","textShapes":14}
+{"kind":"textbox","id":"sh/1svip0rm","slide":15,"text":"14 / DEVELOPMENT VS PRODUCTION","textPreview":"14 / DEVELOPMENT VS PRODUCTION","textChars":30,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/epkze58b","slide":15,"text":"The code keeps local development and the live demo on the same contract","textPreview":"The code keeps local development and the live demo on the same contract","textChars":71,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/zqtgnq9g","slide":15,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/cn2hcvq5","slide":15,"text":"DEVELOPMENT","textPreview":"DEVELOPMENT","textChars":11,"textLines":1,"bbox":[122,174,420,26]}
+{"kind":"textbox","id":"sh/dobyl0rq","slide":15,"text":"PRESENTATION","textPreview":"PRESENTATION","textChars":12,"textLines":1,"bbox":[730,174,420,26]}
+{"kind":"textbox","id":"sh/qlkzal8z","slide":15,"name":"localhost","text":"localhost\nVite :5173","textPreview":"localhost | Vite :5173","textChars":20,"textLines":2,"bbox":[122,230,220,76]}
+{"kind":"shape","id":"sh/rmtgjq9k","slide":15,"bbox":[122,230,5,76]}
+{"kind":"textbox","id":"sh/4zih8bqt","slide":15,"name":"FastAPI","text":"FastAPI\nuvicorn :8000","textPreview":"FastAPI | uvicorn :8000","textChars":21,"textLines":2,"bbox":[122,360,220,76]}
+{"kind":"shape","id":"sh/5kbyhgre","slide":15,"bbox":[122,360,5,76]}
+{"kind":"textbox","id":"sh/1cvudo36","slide":15,"name":"SQLite","text":"SQLite\nlocal file","textPreview":"SQLite | local file","textChars":17,"textLines":2,"bbox":[122,490,220,76]}
+{"kind":"shape","id":"sh/gbmt4j2l","slide":15,"bbox":[122,490,5,76]}
+{"kind":"textbox","id":"sh/fadcbyl0","slide":15,"name":"Render static","text":"Render static\nVITE_API_URL","textPreview":"Render static | VITE_API_URL","textChars":26,"textLines":2,"bbox":[730,230,250,76]}
+{"kind":"shape","id":"sh/e94b2tkf","slide":15,"bbox":[730,230,5,76]}
+{"kind":"textbox","id":"sh/t8vu9o3u","slide":15,"name":"Render service","text":"Render service\npublic /webhook","textPreview":"Render service | public /webhook","textChars":30,"textLines":2,"bbox":[730,360,250,76]}
+{"kind":"shape","id":"sh/snmt0j29","slide":15,"bbox":[730,360,5,76]}
+{"kind":"textbox","id":"sh/rmdc7el4","slide":15,"name":"Postgres","text":"Postgres\nDATABASE_URL","textPreview":"Postgres | DATABASE_URL","textChars":21,"textLines":2,"bbox":[730,490,250,76]}
+{"kind":"shape","id":"sh/6lkby9kj","slide":15,"bbox":[730,490,5,76]}
+{"kind":"shape","id":"sh/5kbu543y","slide":15,"bbox":[232,306,0,54]}
+{"kind":"shape","id":"sh/4j2twz2d","slide":15,"bbox":[232,436,0,54]}
+{"kind":"shape","id":"sh/wn6tcja9","slide":15,"bbox":[855,306,0,54]}
+{"kind":"shape","id":"sh/xoful4bu","slide":15,"bbox":[855,436,0,54]}
+{"kind":"textbox","id":"sh/a1oba9s3","slide":15,"text":"Same REST routes","textPreview":"Same REST routes","textChars":16,"textLines":1,"bbox":[452,356,330,30]}
+{"kind":"textbox","id":"sh/v2xcjeto","slide":15,"text":"Different environment values","textPreview":"Different environment values","textChars":28,"textLines":1,"bbox":[426,400,380,26]}
+{"kind":"textbox","id":"sh/8zmt8zax","slide":15,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/90fuh4bi","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/jksnxi","slide":15,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/config.py\n- C:/Users/KIIT/cowork/aapdaai-backend/render.yaml\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js\n- C:/Users/KIIT/cowork/Aapda_AI/DEPLOY.md"}
+{"kind":"slide","id":"sl/06rmba","slide":16,"title":"15 / IMPLEMENTATION STATUS","textShapes":24}
+{"kind":"textbox","id":"sh/07ulcvyl","slide":16,"text":"15 / IMPLEMENTATION STATUS","textPreview":"15 / IMPLEMENTATION STATUS","textChars":26,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/z6l4jqx0","slide":16,"text":"The demo is strongest when we separate live, partial, and planned","textPreview":"The demo is strongest when we separate live, partial, and planned","textChars":65,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/e5c3algf","slide":16,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/d4j2hgfu","slide":16,"bbox":[840,168,16,16]}
+{"kind":"textbox","id":"sh/c3al8by9","slide":16,"text":"implemented","textPreview":"implemented","textChars":11,"textLines":1,"bbox":[864,165,220,22]}
+{"kind":"shape","id":"sh/r21kf6h4","slide":16,"bbox":[840,206,16,16]}
+{"kind":"textbox","id":"sh/q1s36lgj","slide":16,"text":"partial / needs attention","textPreview":"partial / needs attention","textChars":25,"textLines":1,"bbox":[864,203,220,22]}
+{"kind":"shape","id":"sh/x0nmdkfe","slide":16,"bbox":[840,244,16,16]}
+{"kind":"textbox","id":"sh/wzelkfyt","slide":16,"text":"planned / documented","textPreview":"planned / documented","textChars":20,"textLines":1,"bbox":[864,241,220,22]}
+{"kind":"textbox","id":"sh/yd0ryp07","slide":16,"text":"IMPLEMENTED","textPreview":"IMPLEMENTED","textChars":11,"textLines":1,"bbox":[96,188,330,28]}
+{"kind":"shape","id":"sh/zyt8ruhs","slide":16,"bbox":[96,224,330,0]}
+{"kind":"shape","id":"sh/kz290zid","slide":16,"bbox":[96,246,12,12]}
+{"kind":"textbox","id":"sh/l0bqt4zi","slide":16,"text":"WhatsApp GET/POST webhook","textPreview":"WhatsApp GET/POST webhook","textChars":25,"textLines":1,"bbox":[120,240,306,34]}
+{"kind":"shape","id":"sh/a907up0v","slide":16,"bbox":[96,292,12,12]}
+{"kind":"textbox","id":"sh/ba98nuhg","slide":16,"text":"Raw-message deduplication","textPreview":"Raw-message deduplication","textChars":25,"textLines":1,"bbox":[120,286,306,34]}
+{"kind":"shape","id":"sh/cbipwfi1","slide":16,"bbox":[96,338,12,12]}
+{"kind":"textbox","id":"sh/xcrqpkzm","slide":16,"text":"Rule extraction + optional LLM","textPreview":"Rule extraction + optional LLM","textChars":30,"textLines":1,"bbox":[120,332,306,34]}
+{"kind":"shape","id":"sh/u5kr690f","slide":16,"bbox":[96,384,12,12]}
+{"kind":"textbox","id":"sh/v6d8zeh0","slide":16,"text":"Incident clustering + severity","textPreview":"Incident clustering + severity","textChars":30,"textLines":1,"bbox":[120,378,306,34]}
+{"kind":"shape","id":"sh/ra5or6hc","slide":16,"bbox":[96,430,12,12]}
+{"kind":"textbox","id":"sh/q9wny1gr","slide":16,"text":"REST API + triage actions","textPreview":"REST API + triage actions","textChars":25,"textLines":1,"bbox":[120,424,306,34]}
+{"kind":"shape","id":"sh/dcn6tgf2","slide":16,"bbox":[96,476,12,12]}
+{"kind":"textbox","id":"sh/sbe50byx","slide":16,"text":"Verification, assignment, arrival checks","textPreview":"Verification, assignment, arrival checks","textChars":40,"textLines":1,"bbox":[120,470,306,34]}
+{"kind":"textbox","id":"sh/fe5ovqx8","slide":16,"text":"PARTIAL","textPreview":"PARTIAL","textChars":7,"textLines":1,"bbox":[482,188,300,28]}
+{"kind":"shape","id":"sh/edwn2lgn","slide":16,"bbox":[482,224,300,0]}
+{"kind":"shape","id":"sh/1g76xgfe","slide":16,"bbox":[482,246,12,12]}
+{"kind":"textbox","id":"sh/0fy54vyt","slide":16,"text":"Map component is written","textPreview":"Map component is written","textChars":24,"textLines":1,"bbox":[506,240,276,34]}
+{"kind":"shape","id":"sh/nipozqxk","slide":16,"bbox":[482,292,12,12]}
+{"kind":"textbox","id":"sh/2hgn6lgz","slide":16,"text":"Map is not wired into live App flow","textPreview":"Map is not wired into live App flow","textChars":35,"textLines":1,"bbox":[506,286,276,34]}
+{"kind":"shape","id":"sh/k7i5gvex","slide":16,"bbox":[482,338,12,12]}
+{"kind":"textbox","id":"sh/l8rmp0vi","slide":16,"text":"Resource inventory is seeded","textPreview":"Resource inventory is seeded","textChars":28,"textLines":1,"bbox":[506,332,276,34]}
+{"kind":"shape","id":"sh/ylgnelw7","slide":16,"bbox":[482,384,12,12]}
+{"kind":"textbox","id":"sh/z694nqdc","slide":16,"text":"Authentication is demo-level","textPreview":"Authentication is demo-level","textChars":28,"textLines":1,"bbox":[506,378,276,34]}
+{"kind":"textbox","id":"sh/cjylcve1","slide":16,"text":"PLANNED / OUT OF SCOPE","textPreview":"PLANNED / OUT OF SCOPE","textChars":22,"textLines":1,"bbox":[862,306,300,28]}
+{"kind":"shape","id":"sh/xk7ml0vm","slide":16,"bbox":[862,342,300,0]}
+{"kind":"shape","id":"sh/ahg3alwv","slide":16,"bbox":[862,364,12,12]}
+{"kind":"textbox","id":"sh/bip4jqdg","slide":16,"text":"Live government resource feed","textPreview":"Live government resource feed","textChars":29,"textLines":1,"bbox":[886,358,276,34]}
+{"kind":"shape","id":"sh/ofyl8bep","slide":16,"bbox":[862,410,12,12]}
+{"kind":"textbox","id":"sh/pg7mhgva","slide":16,"text":"Production identity and roles","textPreview":"Production identity and roles","textChars":29,"textLines":1,"bbox":[886,404,276,34]}
+{"kind":"shape","id":"sh/dk32pcb2","slide":16,"bbox":[862,456,12,12]}
+{"kind":"textbox","id":"sh/sju1g7uh","slide":16,"text":"Rate limiting / monitoring","textPreview":"Rate limiting / monitoring","textChars":26,"textLines":1,"bbox":[886,450,276,34]}
+{"kind":"shape","id":"sh/rilkn2tc","slide":16,"bbox":[862,502,12,12]}
+{"kind":"textbox","id":"sh/qhcjehcr","slide":16,"text":"Automated emergency dispatch","textPreview":"Automated emergency dispatch","textChars":28,"textLines":1,"bbox":[886,496,276,34]}
+{"kind":"textbox","id":"sh/1on2twbe","slide":16,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/0ne1krut","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/06rmba","slide":16,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/resources.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/IncidentMap.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/DEPLOY.md"}
+{"kind":"slide","id":"sl/e9w411","slide":17,"title":"16 / RELIABILITY","textShapes":17}
+{"kind":"textbox","id":"sh/b2l83apc","slide":17,"text":"16 / RELIABILITY","textPreview":"16 / RELIABILITY","textChars":16,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/c3u9cv6h","slide":17,"text":"The critical failure points are visible in the architecture","textPreview":"The critical failure points are visible in the architecture","textChars":59,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/x43q5072","slide":17,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/2dsr6l8f","slide":17,"name":"INPUT","text":"INPUT\nWhatsApp / web","textPreview":"INPUT | WhatsApp / web","textChars":20,"textLines":2,"bbox":[74,280,180,76]}
+{"kind":"shape","id":"sh/ne18zqp0","slide":17,"bbox":[74,280,5,76]}
+{"kind":"textbox","id":"sh/oza98vql","slide":17,"name":"BACKEND","text":"BACKEND\nprocessing","textPreview":"BACKEND | processing","textChars":18,"textLines":2,"bbox":[350,280,180,76]}
+{"kind":"shape","id":"sh/p0jq1076","slide":17,"bbox":[350,280,5,76]}
+{"kind":"textbox","id":"sh/m9wripoz","slide":17,"name":"DATABASE","text":"DATABASE\nstate","textPreview":"DATABASE | state","textChars":14,"textLines":2,"bbox":[626,280,180,76]}
+{"kind":"shape","id":"sh/7a5sbup4","slide":17,"bbox":[626,280,5,76]}
+{"kind":"textbox","id":"sh/byl4jalg","slide":17,"name":"API","text":"API\nREST","textPreview":"API | REST","textChars":8,"textLines":2,"bbox":[902,280,150,76]}
+{"kind":"shape","id":"sh/axcna5kv","slide":17,"bbox":[902,280,5,76]}
+{"kind":"textbox","id":"sh/xk3mlk3m","slide":17,"name":"UI","text":"UI\nReact","textPreview":"UI | React","textChars":8,"textLines":2,"bbox":[1132,280,100,76]}
+{"kind":"shape","id":"sh/cju5cf21","slide":17,"bbox":[1132,280,5,76]}
+{"kind":"shape","id":"sh/zml4nu1s","slide":17,"bbox":[254,318,96,0]}
+{"kind":"shape","id":"sh/ylcnepk7","slide":17,"bbox":[530,318,96,0]}
+{"kind":"shape","id":"sh/lonmpkji","slide":17,"bbox":[806,318,96,0]}
+{"kind":"shape","id":"sh/kne5gz2d","slide":17,"bbox":[1052,318,80,0]}
+{"kind":"textbox","id":"sh/7q54ru1o","slide":17,"text":"R1","textPreview":"R1","textChars":2,"textLines":1,"bbox":[84,454,42,30]}
+{"kind":"textbox","id":"sh/mpwnipk3","slide":17,"text":"Webhook spoofing / no signature validation","textPreview":"Webhook spoofing / no signature validation","textChars":42,"textLines":1,"bbox":[138,456,214,40]}
+{"kind":"textbox","id":"sh/2x0z6x8n","slide":17,"text":"R2","textPreview":"R2","textChars":2,"textLines":1,"bbox":[382,454,42,30]}
+{"kind":"textbox","id":"sh/3y9gz298","slide":17,"text":"Race risk in resource assignment","textPreview":"Race risk in resource assignment","textChars":32,"textLines":1,"bbox":[436,456,214,40]}
+{"kind":"textbox","id":"sh/4z2h8nqt","slide":17,"text":"R3","textPreview":"R3","textChars":2,"textLines":1,"bbox":[680,454,42,30]}
+{"kind":"textbox","id":"sh/pkby1s7e","slide":17,"text":"Frontend auth accepts any non-empty ID","textPreview":"Frontend auth accepts any non-empty ID","textChars":38,"textLines":1,"bbox":[734,456,214,40]}
+{"kind":"textbox","id":"sh/ut0f2d8r","slide":17,"text":"R4","textPreview":"R4","textChars":2,"textLines":1,"bbox":[978,454,42,30]}
+{"kind":"textbox","id":"sh/fu9gvi9w","slide":17,"text":"Free-tier sleep delays first request","textPreview":"Free-tier sleep delays first request","textChars":36,"textLines":1,"bbox":[1032,456,214,40]}
+{"kind":"textbox","id":"sh/gvih4nqh","slide":17,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/hwryxsr2","slide":17,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/e9w411","slide":17,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/resources.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx\n- C:/Users/KIIT/cowork/aapdaai-backend/render.yaml"}
+{"kind":"slide","id":"sl/xz8gx1","slide":18,"title":"17 / SECURITY MAP","textShapes":22}
+{"kind":"textbox","id":"sh/6h036p0v","slide":18,"text":"17 / SECURITY MAP","textPreview":"17 / SECURITY MAP","textChars":17,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/tkr21kz6","slide":18,"text":"The prototype has useful controls, but the trust boundary is still thin","textPreview":"The prototype has useful controls, but the trust boundary is still thin","textChars":71,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/sjil8fi1","slide":18,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/ju9kvah4","slide":18,"name":"Citizen","text":"Citizen\noutside system","textPreview":"Citizen | outside system","textChars":22,"textLines":2,"bbox":[72,240,160,90]}
+{"kind":"shape","id":"sh/it03250j","slide":18,"bbox":[72,240,5,90]}
+{"kind":"textbox","id":"sh/5gr2xkza","slide":18,"name":"WhatsApp / Meta","text":"WhatsApp / Meta\nplatform boundary","textPreview":"WhatsApp / Meta | platform boundary","textChars":33,"textLines":2,"bbox":[262,240,160,90]}
+{"kind":"shape","id":"sh/4vil4fip","slide":18,"bbox":[262,240,5,90]}
+{"kind":"shape","id":"sh/vqpkrah8","slide":18,"bbox":[232,285,30,0]}
+{"kind":"textbox","id":"sh/upg3y50n","slide":18,"name":"Webhook","text":"Webhook\ntoken handshake","textPreview":"Webhook | token handshake","textChars":23,"textLines":2,"bbox":[452,240,160,90]}
+{"kind":"shape","id":"sh/czmtcbex","slide":18,"bbox":[452,240,5,90]}
+{"kind":"shape","id":"sh/d0vu5gv2","slide":18,"bbox":[422,285,30,0]}
+{"kind":"textbox","id":"sh/qd4ba1wr","slide":18,"name":"Backend","text":"Backend\nCORS + parameterized SQL","textPreview":"Backend | CORS + parameterized SQL","textChars":32,"textLines":2,"bbox":[642,240,160,90]}
+{"kind":"shape","id":"sh/rydc36dc","slide":18,"bbox":[642,240,5,90]}
+{"kind":"shape","id":"sh/4bmt8rel","slide":18,"bbox":[612,285,30,0]}
+{"kind":"textbox","id":"sh/pcvu1wv6","slide":18,"name":"Database","text":"Database\nraw sensitive reports","textPreview":"Database | raw sensitive reports","textChars":30,"textLines":2,"bbox":[832,240,160,90]}
+{"kind":"shape","id":"sh/29kb61wf","slide":18,"bbox":[832,240,5,90]}
+{"kind":"shape","id":"sh/3adcz6d0","slide":18,"bbox":[802,285,30,0]}
+{"kind":"textbox","id":"sh/o76dkvup","slide":18,"name":"Frontend","text":"Frontend\ndemo login","textPreview":"Frontend | demo login","textChars":19,"textLines":2,"bbox":[1022,240,160,90]}
+{"kind":"shape","id":"sh/98fud0va","slide":18,"bbox":[1022,240,5,90]}
+{"kind":"shape","id":"sh/xovux0ne","slide":18,"bbox":[992,285,30,0]}
+{"kind":"textbox","id":"sh/wnmt4vm9","slide":18,"text":"PRESENT","textPreview":"PRESENT","textChars":7,"textLines":1,"bbox":[130,432,160,24]}
+{"kind":"textbox","id":"sh/vmtcvq5o","slide":18,"text":"needs improvement","textPreview":"needs improvement","textChars":17,"textLines":1,"bbox":[410,432,200,24]}
+{"kind":"textbox","id":"sh/alkb2l43","slide":18,"text":"MISSING / DEMO-LEVEL","textPreview":"MISSING / DEMO-LEVEL","textChars":20,"textLines":1,"bbox":[790,432,250,24]}
+{"kind":"textbox","id":"sh/9kbutgni","slide":18,"text":"Webhook verify token","textPreview":"Webhook verify token","textChars":20,"textLines":1,"bbox":[92,486,170,30]}
+{"kind":"textbox","id":"sh/8j2t0bmx","slide":18,"text":"Phone-number filtering","textPreview":"Phone-number filtering","textChars":22,"textLines":1,"bbox":[282,486,170,30]}
+{"kind":"textbox","id":"sh/nitcr65c","slide":18,"text":"SQL parameters","textPreview":"SQL parameters","textChars":14,"textLines":1,"bbox":[92,528,170,30]}
+{"kind":"textbox","id":"sh/mxkbyl4r","slide":18,"text":"Origin allow-list","textPreview":"Origin allow-list","textChars":17,"textLines":1,"bbox":[282,528,170,30]}
+{"kind":"textbox","id":"sh/lwbupgnm","slide":18,"text":"Sensitive phone/report data","textPreview":"Sensitive phone/report data","textChars":27,"textLines":1,"bbox":[500,486,240,30]}
+{"kind":"textbox","id":"sh/0vitwbm1","slide":18,"text":"Loose preview-origin regex","textPreview":"Loose preview-origin regex","textChars":26,"textLines":1,"bbox":[500,528,240,30]}
+{"kind":"textbox","id":"sh/q1grqhkj","slide":18,"text":"Signature validation","textPreview":"Signature validation","textChars":20,"textLines":1,"bbox":[770,486,170,30]}
+{"kind":"textbox","id":"sh/b2p8z2l4","slide":18,"text":"Auth / roles","textPreview":"Auth / roles","textChars":12,"textLines":1,"bbox":[960,486,170,30]}
+{"kind":"textbox","id":"sh/c3y9s72p","slide":18,"text":"Rate limiting","textPreview":"Rate limiting","textChars":13,"textLines":1,"bbox":[770,528,170,30]}
+{"kind":"textbox","id":"sh/dorq1c3a","slide":18,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/2xgr2xkn","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/xz8gx1","slide":18,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/config.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx"}
+{"kind":"slide","id":"sl/q8eifg","slide":19,"title":"18 / NEXT IMPROVEMENTS","textShapes":20}
+{"kind":"textbox","id":"sh/il4rqdcr","slide":19,"text":"18 / NEXT IMPROVEMENTS","textPreview":"18 / NEXT IMPROVEMENTS","textChars":22,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/5ofqlsvi","slide":19,"text":"Five changes would make the demo safer to extend","textPreview":"Five changes would make the demo safer to extend","textChars":48,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/4n69snux","slide":19,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/vyd8fid0","slide":19,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[104,164,70,34]}
+{"kind":"textbox","id":"sh/ax4rmdcv","slide":19,"text":"Webhook authenticity","textPreview":"Webhook authenticity","textChars":20,"textLines":1,"bbox":[210,162,320,30]}
+{"kind":"textbox","id":"sh/hkvqhsv6","slide":19,"text":"validate Meta request signatures","textPreview":"validate Meta request signatures","textChars":32,"textLines":1,"bbox":[610,164,500,26]}
+{"kind":"shape","id":"sh/wzm9onul","slide":19,"bbox":[210,212,900,0]}
+{"kind":"textbox","id":"sh/nut8byd4","slide":19,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[104,252,70,34]}
+{"kind":"textbox","id":"sh/mtkritcj","slide":19,"text":"Atomic assignments","textPreview":"Atomic assignments","textChars":18,"textLines":1,"bbox":[210,250,320,30]}
+{"kind":"textbox","id":"sh/ormpgfqp","slide":19,"text":"make check-and-commit one transaction","textPreview":"make check-and-commit one transaction","textChars":37,"textLines":1,"bbox":[610,252,500,26]}
+{"kind":"shape","id":"sh/9sfqp07a","slide":19,"bbox":[210,300,900,0]}
+{"kind":"textbox","id":"sh/mp47e58z","slide":19,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[104,340,70,34]}
+{"kind":"textbox","id":"sh/nqd8napk","slide":19,"text":"API validation","textPreview":"API validation","textChars":14,"textLines":1,"bbox":[210,338,320,30]}
+{"kind":"textbox","id":"sh/0nmpcvqt","slide":19,"text":"typed request models + limits","textPreview":"typed request models + limits","textChars":29,"textLines":1,"bbox":[610,340,500,26]}
+{"kind":"shape","id":"sh/1ovql07e","slide":19,"bbox":[210,388,900,0]}
+{"kind":"textbox","id":"sh/el47al8n","slide":19,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[104,428,70,34]}
+{"kind":"textbox","id":"sh/zmd8jqp8","slide":19,"text":"Real access control","textPreview":"Real access control","textChars":19,"textLines":1,"bbox":[210,426,320,30]}
+{"kind":"textbox","id":"sh/kj69oz6x","slide":19,"text":"replace demo login with roles","textPreview":"replace demo login with roles","textChars":29,"textLines":1,"bbox":[610,428,500,26]}
+{"kind":"shape","id":"sh/lkzqxk7i","slide":19,"bbox":[210,476,900,0]}
+{"kind":"textbox","id":"sh/t0vq1kzm","slide":19,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[104,516,70,34]}
+{"kind":"textbox","id":"sh/szmp8fy1","slide":19,"text":"Operational visibility","textPreview":"Operational visibility","textChars":22,"textLines":1,"bbox":[210,514,320,30]}
+{"kind":"textbox","id":"sh/7yt8zahw","slide":19,"text":"structured logs + uptime alerts","textPreview":"structured logs + uptime alerts","textChars":31,"textLines":1,"bbox":[610,516,500,26]}
+{"kind":"shape","id":"sh/6dk76pgb","slide":19,"bbox":[210,564,900,0]}
+{"kind":"textbox","id":"sh/5cbqxkzq","slide":19,"text":"These are follow-on hardening steps, not claims about what the hackathon build already does.","textPreview":"These are follow-on hardening steps, not claims about what the hackathon build already does.","textChars":92,"textLines":1,"bbox":[192,622,900,24]}
+{"kind":"textbox","id":"sh/kb2p4fy5","slide":19,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/jatovahk","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/q8eifg","slide":19,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/resources.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py"}
+{"kind":"slide","id":"sl/r91crf","slide":20,"title":"19 / BEFORE -> AFTER","textShapes":20}
+{"kind":"textbox","id":"sh/1cfa9ofi","slide":20,"text":"19 / BEFORE -> AFTER","textPreview":"19 / BEFORE -> AFTER","textChars":20,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/e9obe9w7","slide":20,"text":"The next version adds trust and observability around the same core pipeline","textPreview":"The next version adds trust and observability around the same core pipeline","textChars":75,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/faxs7exs","slide":20,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/s76tcze1","slide":20,"text":"CURRENT PROTOTYPE","textPreview":"CURRENT PROTOTYPE","textChars":17,"textLines":1,"bbox":[154,174,360,26]}
+{"kind":"textbox","id":"sh/t8fa54fm","slide":20,"text":"HARDENED PATH","textPreview":"HARDENED PATH","textChars":13,"textLines":1,"bbox":[796,174,360,26]}
+{"kind":"textbox","id":"sh/654ra9wv","slide":20,"name":"Input","text":"Input\ncurrent","textPreview":"Input | current","textChars":13,"textLines":2,"bbox":[130,224,260,44]}
+{"kind":"shape","id":"sh/r6xs3exg","slide":20,"bbox":[130,224,5,44]}
+{"kind":"textbox","id":"sh/c3qto3e5","slide":20,"name":"Webhook","text":"Webhook\ntoken only","textPreview":"Webhook | token only","textChars":18,"textLines":2,"bbox":[130,286,260,44]}
+{"kind":"shape","id":"sh/x4zuh8vq","slide":20,"bbox":[130,286,5,44]}
+{"kind":"textbox","id":"sh/1wbu5or6","slide":20,"name":"Process","text":"Process\ncurrent","textPreview":"Process | current","textChars":15,"textLines":2,"bbox":[130,348,260,44]}
+{"kind":"shape","id":"sh/0v2tcjal","slide":20,"bbox":[130,348,5,44]}
+{"kind":"textbox","id":"sh/fu9c3e90","slide":20,"name":"Store","text":"Store\ncurrent","textPreview":"Store | current","textChars":13,"textLines":2,"bbox":[130,410,260,44]}
+{"kind":"shape","id":"sh/e90ba9sf","slide":20,"bbox":[130,410,5,44]}
+{"kind":"textbox","id":"sh/d8ru14ru","slide":20,"name":"API","text":"API\ncurrent","textPreview":"API | current","textChars":11,"textLines":2,"bbox":[130,472,260,44]}
+{"kind":"shape","id":"sh/s7it8za9","slide":20,"bbox":[130,472,5,44]}
+{"kind":"textbox","id":"sh/r69czeto","slide":20,"name":"UI","text":"UI\ncurrent","textPreview":"UI | current","textChars":10,"textLines":2,"bbox":[130,534,260,44]}
+{"kind":"shape","id":"sh/q50b69sj","slide":20,"bbox":[130,534,5,44]}
+{"kind":"textbox","id":"sh/x4vud8ry","slide":20,"name":"Input","text":"Input\ntrust boundary","textPreview":"Input | trust boundary","textChars":20,"textLines":2,"bbox":[790,198,300,44]}
+{"kind":"shape","id":"sh/w3mtk3at","slide":20,"bbox":[790,198,5,44]}
+{"kind":"textbox","id":"sh/gje5wbm1","slide":20,"name":"Verify","text":"Verify\ntrust boundary","textPreview":"Verify | trust boundary","textChars":21,"textLines":2,"bbox":[790,260,300,44]}
+{"kind":"shape","id":"sh/hknm5g3m","slide":20,"bbox":[790,260,5,44]}
+{"kind":"textbox","id":"sh/uhcnu14v","slide":20,"name":"Validate","text":"Validate\ncontrol","textPreview":"Validate | control","textChars":16,"textLines":2,"bbox":[790,322,300,44]}
+{"kind":"shape","id":"sh/vil436lg","slide":20,"bbox":[790,322,5,44]}
+{"kind":"textbox","id":"sh/8fu5srm5","slide":20,"name":"Process","text":"Process\ncontrol","textPreview":"Process | control","textChars":15,"textLines":2,"bbox":[790,384,300,44]}
+{"kind":"shape","id":"sh/tg3m1w3a","slide":20,"bbox":[790,384,5,44]}
+{"kind":"textbox","id":"sh/6dcnqh4z","slide":20,"name":"Store atomically","text":"Store atomically\ncontrol","textPreview":"Store atomically | control","textChars":24,"textLines":2,"bbox":[790,446,300,44]}
+{"kind":"shape","id":"sh/7el4zmlk","slide":20,"bbox":[790,446,5,44]}
+{"kind":"textbox","id":"sh/kra5ormt","slide":20,"name":"API + auth","text":"API + auth\ncontrol","textPreview":"API + auth | control","textChars":18,"textLines":2,"bbox":[790,508,300,44]}
+{"kind":"shape","id":"sh/lc3mxw3e","slide":20,"bbox":[790,508,5,44]}
+{"kind":"textbox","id":"sh/nm1o7mpg","slide":20,"name":"UI + monitoring","text":"UI + monitoring\ncontrol","textPreview":"UI + monitoring | control","textChars":23,"textLines":2,"bbox":[790,570,300,44]}
+{"kind":"shape","id":"sh/mlsnehov","slide":20,"bbox":[790,570,5,44]}
+{"kind":"shape","id":"sh/9oj69c76","slide":20,"bbox":[260,268,0,18]}
+{"kind":"shape","id":"sh/ona5gr6l","slide":20,"bbox":[260,330,0,18]}
+{"kind":"shape","id":"sh/bq1obm5c","slide":20,"bbox":[260,392,0,18]}
+{"kind":"shape","id":"sh/apsnihor","slide":20,"bbox":[260,454,0,18]}
+{"kind":"shape","id":"sh/xc36dwni","slide":20,"bbox":[260,516,0,18]}
+{"kind":"shape","id":"sh/wba5kr6x","slide":20,"bbox":[940,242,0,18]}
+{"kind":"shape","id":"sh/jelof658","slide":20,"bbox":[940,304,0,18]}
+{"kind":"shape","id":"sh/ydc7m1o3","slide":20,"bbox":[940,366,0,18]}
+{"kind":"shape","id":"sh/ixk7i5wz","slide":20,"bbox":[940,428,0,18]}
+{"kind":"shape","id":"sh/jit8badk","slide":20,"bbox":[940,490,0,18]}
+{"kind":"shape","id":"sh/4j2pkfe5","slide":20,"bbox":[940,552,0,18]}
+{"kind":"textbox","id":"sh/5kbqdkvq","slide":20,"text":"Keep the useful shape. Add the missing controls at the boundaries.","textPreview":"Keep the useful shape. Add the missing controls at the boundaries.","textChars":66,"textLines":1,"bbox":[386,602,510,28]}
+{"kind":"textbox","id":"sh/6lkrmpwb","slide":20,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/rmt8fadw","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/r91crf","slide":20,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/resources.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx"}
+{"kind":"slide","id":"sl/j1pj5u","slide":21,"title":"20 / THE WHOLE SYSTEM","textShapes":10}
+{"kind":"textbox","id":"sh/hwny1k3m","slide":21,"text":"20 / THE WHOLE SYSTEM","textPreview":"20 / THE WHOLE SYSTEM","textChars":21,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/utwf654v","slide":21,"text":"AapdaAI in one picture","textPreview":"AapdaAI in one picture","textChars":22,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/vu5gzalg","slide":21,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/8rux4vmp","slide":21,"name":"AAPDAAI","text":"AAPDAAI\ndecision-support pipeline","textPreview":"AAPDAAI | decision-support pipeline","textChars":33,"textLines":2,"bbox":[500,260,280,100]}
+{"kind":"shape","id":"sh/ts3yx03a","slide":21,"bbox":[500,260,5,100]}
+{"kind":"textbox","id":"sh/6pcf2l4z","slide":21,"name":"REPORTING","text":"REPORTING\nWhatsApp + web","textPreview":"REPORTING | WhatsApp + web","textChars":24,"textLines":2,"bbox":[120,160,220,82]}
+{"kind":"shape","id":"sh/7qlgvql4","slide":21,"bbox":[120,160,5,82]}
+{"kind":"textbox","id":"sh/knux0vmt","slide":21,"name":"PROCESSING","text":"PROCESSING\nextract + cluster + score","textPreview":"PROCESSING | extract + cluster + score","textChars":36,"textLines":2,"bbox":[120,420,260,82]}
+{"kind":"shape","id":"sh/lo3yt03e","slide":21,"bbox":[120,420,5,82]}
+{"kind":"textbox","id":"sh/lcre5krq","slide":21,"name":"DECISION","text":"DECISION\ntriage + verify + assign","textPreview":"DECISION | triage + verify + assign","textChars":33,"textLines":2,"bbox":[940,160,240,82]}
+{"kind":"shape","id":"sh/kbidwfa5","slide":21,"bbox":[940,160,5,82]}
+{"kind":"textbox","id":"sh/ja9w3a90","slide":21,"name":"OUTCOME","text":"OUTCOME\nassistance + arrival","textPreview":"OUTCOME | assistance + arrival","textChars":28,"textLines":2,"bbox":[940,420,240,82]}
+{"kind":"shape","id":"sh/y90vupsf","slide":21,"bbox":[940,420,5,82]}
+{"kind":"textbox","id":"sh/x8ru1kru","slide":21,"name":"DATABASE","text":"DATABASE\nraw evidence + state","textPreview":"DATABASE | raw evidence + state","textChars":29,"textLines":2,"bbox":[500,500,280,82]}
+{"kind":"shape","id":"sh/w7idsfa9","slide":21,"bbox":[500,500,5,82]}
+{"kind":"shape","id":"sh/b69cza9o","slide":21,"bbox":[340,201,160,109]}
+{"kind":"shape","id":"sh/a50vq5s3","slide":21,"bbox":[380,310,120,151]}
+{"kind":"shape","id":"sh/947ux0ri","slide":21,"bbox":[780,201,160,109]}
+{"kind":"shape","id":"sh/o3ydovad","slide":21,"bbox":[780,310,160,151]}
+{"kind":"shape","id":"sh/0n2d4fit","slide":21,"bbox":[640,360,0,140]}
+{"kind":"textbox","id":"sh/1obed0ze","slide":21,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/elkv2503","slide":21,"text":"21","textPreview":"21","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/j1pj5u","slide":21,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/pipeline.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx"}
+{"kind":"slide","id":"sl/nfz288","slide":22,"title":"21 / HOW TO READ THE REPOS","textShapes":19}
+{"kind":"textbox","id":"sh/2pcjet47","slide":22,"text":"21 / HOW TO READ THE REPOS","textPreview":"21 / HOW TO READ THE REPOS","textChars":26,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/ps32p83i","slide":22,"text":"The codebase has a clear starting point for every change","textPreview":"The codebase has a clear starting point for every change","textChars":56,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/oru1g3mx","slide":22,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/belkrylo","slide":22,"name":"BACKEND","text":"BACKEND\naapdaai-backend","textPreview":"BACKEND | aapdaai-backend","textChars":23,"textLines":2,"bbox":[98,170,300,70]}
+{"kind":"shape","id":"sh/qtcjit43","slide":22,"bbox":[98,170,5,70]}
+{"kind":"textbox","id":"sh/dgn2t83u","slide":22,"name":"FRONTEND","text":"FRONTEND\nAapda_AI","textPreview":"FRONTEND | Aapda_AI","textChars":17,"textLines":2,"bbox":[882,170,300,70]}
+{"kind":"shape","id":"sh/cfu1k3m9","slide":22,"bbox":[882,170,5,70]}
+{"kind":"textbox","id":"sh/zi5kvilk","slide":22,"name":"Routes","text":"Routes\napp/main.py","textPreview":"Routes | app/main.py","textChars":18,"textLines":2,"bbox":[98,286,300,42]}
+{"kind":"shape","id":"sh/yhw3md4z","slide":22,"bbox":[98,286,5,42]}
+{"kind":"shape","id":"sh/wnu98zqx","slide":22,"bbox":[248,240,0,46]}
+{"kind":"textbox","id":"sh/xo3a147i","slide":22,"name":"Parsing","text":"Parsing\napp/extract.py","textPreview":"Parsing | app/extract.py","textChars":22,"textLines":2,"bbox":[98,342,300,42]}
+{"kind":"shape","id":"sh/a1sr6p87","slide":22,"bbox":[98,342,5,42]}
+{"kind":"shape","id":"sh/vm1szupc","slide":22,"bbox":[248,240,0,102]}
+{"kind":"textbox","id":"sh/kru9czq9","slide":22,"name":"Flow","text":"Flow\napp/pipeline.py","textPreview":"Flow | app/pipeline.py","textChars":20,"textLines":2,"bbox":[98,398,300,42]}
+{"kind":"shape","id":"sh/5s3a547u","slide":22,"bbox":[98,398,5,42]}
+{"kind":"shape","id":"sh/ipcra983","slide":22,"bbox":[248,240,0,158]}
+{"kind":"textbox","id":"sh/jqls3epo","slide":22,"name":"Scoring","text":"Scoring\napp/compute.py","textPreview":"Scoring | app/compute.py","textChars":22,"textLines":2,"bbox":[98,454,300,42]}
+{"kind":"shape","id":"sh/svetgjq5","slide":22,"bbox":[98,454,5,42]}
+{"kind":"shape","id":"sh/twna9o7q","slide":22,"bbox":[248,240,0,214]}
+{"kind":"textbox","id":"sh/1cjatozu","slide":22,"name":"Storage","text":"Storage\napp/db.py + store.py","textPreview":"Storage | app/db.py + store.py","textChars":28,"textLines":2,"bbox":[98,510,300,42]}
+{"kind":"shape","id":"sh/gba90ji9","slide":22,"bbox":[98,510,5,42]}
+{"kind":"shape","id":"sh/fa1sreho","slide":22,"bbox":[248,240,0,270]}
+{"kind":"textbox","id":"sh/e9sry90j","slide":22,"name":"Inventory","text":"Inventory\napp/resources.py","textPreview":"Inventory | app/resources.py","textChars":26,"textLines":2,"bbox":[98,566,300,42]}
+{"kind":"shape","id":"sh/pgjaxoz6","slide":22,"bbox":[98,566,5,42]}
+{"kind":"shape","id":"sh/ofa94jyl","slide":22,"bbox":[248,240,0,326]}
+{"kind":"textbox","id":"sh/3e1sveh0","slide":22,"name":"API calls","text":"API calls\nsrc/api.js","textPreview":"API calls | src/api.js","textChars":20,"textLines":2,"bbox":[882,286,300,42]}
+{"kind":"shape","id":"sh/2dsr2tgf","slide":22,"bbox":[882,286,5,42]}
+{"kind":"shape","id":"sh/5kzal4zm","slide":22,"bbox":[1032,240,0,46]}
+{"kind":"textbox","id":"sh/4jq9szi1","slide":22,"name":"Polling","text":"Polling\nsrc/useIncidents.js","textPreview":"Polling | src/useIncidents.js","textChars":27,"textLines":2,"bbox":[882,342,300,42]}
+{"kind":"shape","id":"sh/up47m5gz","slide":22,"bbox":[882,342,5,42]}
+{"kind":"shape","id":"sh/vqxovqxk","slide":22,"bbox":[1032,240,0,102]}
+{"kind":"textbox","id":"sh/wr6povy5","slide":22,"name":"Triage","text":"Triage\nsrc/TriageQueue.jsx","textPreview":"Triage | src/TriageQueue.jsx","textChars":26,"textLines":2,"bbox":[882,398,300,42]}
+{"kind":"shape","id":"sh/hcf6x0fq","slide":22,"bbox":[882,398,5,42]}
+{"kind":"shape","id":"sh/ido7q5gb","slide":22,"bbox":[1032,240,0,158]}
+{"kind":"textbox","id":"sh/jex8zaxg","slide":22,"name":"Actions","text":"Actions\nsrc/OperatorActions.jsx","textPreview":"Actions | src/OperatorActions.jsx","textChars":31,"textLines":2,"bbox":[882,454,300,42]}
+{"kind":"shape","id":"sh/4f6psfe1","slide":22,"bbox":[882,454,5,42]}
+{"kind":"shape","id":"sh/5gfq1kfm","slide":22,"bbox":[1032,240,0,214]}
+{"kind":"textbox","id":"sh/yhk7ulgr","slide":22,"name":"Assistance","text":"Assistance\nsrc/AssistancePanel.jsx","textPreview":"Assistance | src/AssistancePanel.jsx","textChars":34,"textLines":2,"bbox":[882,510,300,42]}
+{"kind":"shape","id":"sh/ziton6xc","slide":22,"bbox":[882,510,5,42]}
+{"kind":"shape","id":"sh/f2lwbil4","slide":22,"bbox":[1032,240,0,270]}
+{"kind":"textbox","id":"sh/e1cv2d4j","slide":22,"name":"App shell","text":"App shell\nsrc/App.jsx","textPreview":"App shell | src/App.jsx","textChars":21,"textLines":2,"bbox":[882,566,300,42]}
+{"kind":"shape","id":"sh/143ed83u","slide":22,"bbox":[882,566,5,42]}
+{"kind":"shape","id":"sh/g3ud4nmp","slide":22,"bbox":[1032,240,0,326]}
+{"kind":"textbox","id":"sh/36lwfil0","slide":22,"text":"Shared contract: REST endpoints + incident shape","textPreview":"Shared contract: REST endpoints + incident shape","textChars":48,"textLines":1,"bbox":[442,408,396,50]}
+{"kind":"textbox","id":"sh/25cv6d4f","slide":22,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/p83ehs36","slide":22,"text":"22","textPreview":"22","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/nfz288","slide":22,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/extract.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/pipeline.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/compute.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/db.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/api.js\n- C:/Users/KIIT/cowork/Aapda_AI/src/TriageQueue.jsx\n- C:/Users/KIIT/cowork/Aapda_AI/src/OperatorActions.jsx"}
+{"kind":"slide","id":"sl/uzhjh9","slide":23,"title":"22 / TAKEAWAY","textShapes":9}
+{"kind":"textbox","id":"sh/czuxcvul","slide":23,"text":"22 / TAKEAWAY","textPreview":"22 / TAKEAWAY","textChars":13,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/belwjqd0","slide":23,"text":"The value is the operational picture, not just the message inbox","textPreview":"The value is the operational picture, not just the message inbox","textChars":64,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/qdcfalcf","slide":23,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/pc3ehgva","slide":23,"name":"DISASTER REPORT","text":"DISASTER REPORT\nscattered input","textPreview":"DISASTER REPORT | scattered input","textChars":31,"textLines":2,"bbox":[110,260,210,92]}
+{"kind":"shape","id":"sh/obux8bup","slide":23,"bbox":[110,260,5,92]}
+{"kind":"textbox","id":"sh/3a1wf6d4","slide":23,"name":"AAPDAAI","text":"AAPDAAI\npipeline","textPreview":"AAPDAAI | pipeline","textChars":16,"textLines":2,"bbox":[400,260,210,92]}
+{"kind":"shape","id":"sh/29sf6lcj","slide":23,"bbox":[400,260,5,92]}
+{"kind":"textbox","id":"sh/98nytkve","slide":23,"name":"STRUCTURED DATA","text":"STRUCTURED DATA\nlocation + need + people","textPreview":"STRUCTURED DATA | location + need + people","textChars":40,"textLines":2,"bbox":[690,260,230,92]}
+{"kind":"shape","id":"sh/87exkfut","slide":23,"bbox":[690,260,5,92]}
+{"kind":"textbox","id":"sh/atcvm58b","slide":23,"name":"BETTER DECISION","text":"BETTER DECISION\nhuman authority","textPreview":"BETTER DECISION | human authority","textChars":31,"textLines":2,"bbox":[1000,260,210,92]}
+{"kind":"shape","id":"sh/bulcfapw","slide":23,"bbox":[1000,260,5,92]}
+{"kind":"shape","id":"sh/wvudofqh","slide":23,"bbox":[320,306,80,0]}
+{"kind":"shape","id":"sh/xg3ehk72","slide":23,"bbox":[610,306,80,0]}
+{"kind":"shape","id":"sh/mpsvil8f","slide":23,"bbox":[920,306,80,0]}
+{"kind":"textbox","id":"sh/nq1cbqp0","slide":23,"text":"AapdaAI turns scattered disaster reports into a structured operational picture for decision makers.","textPreview":"AapdaAI turns scattered disaster reports into a structured operational picture for decision makers.","textChars":99,"textLines":1,"bbox":[178,494,930,54]}
+{"kind":"textbox","id":"sh/orudkvql","slide":23,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/9s3ud07q","slide":23,"text":"23","textPreview":"23","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/uzhjh9","slide":23,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/pipeline.py\n- C:/Users/KIIT/cowork/Aapda_AI/src/App.jsx"}
+{"kind":"slide","id":"sl/1krtd5","slide":24,"title":"23 / TECHNOLOGY STACK","textShapes":25}
+{"kind":"textbox","id":"sh/5sj6xcbq","slide":24,"text":"23 / TECHNOLOGY STACK","textPreview":"23 / TECHNOLOGY STACK","textChars":21,"textLines":1,"bbox":[64,30,420,24]}
+{"kind":"textbox","id":"sh/ips72xcf","slide":24,"text":"The stack is intentionally legible: familiar parts, one coherent path","textPreview":"The stack is intentionally legible: familiar parts, one coherent path","textChars":69,"textLines":1,"bbox":[64,58,1120,54]}
+{"kind":"shape","id":"sh/jq1ov2tk","slide":24,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/w3ap07u9","slide":24,"text":"FRONTEND","textPreview":"FRONTEND","textChars":8,"textLines":1,"bbox":[90,190,220,26]}
+{"kind":"textbox","id":"sh/hoj6tcbu","slide":24,"name":"React 19","text":"React 19\nused in code","textPreview":"React 19 | used in code","textChars":21,"textLines":2,"bbox":[90,250,220,48]}
+{"kind":"shape","id":"sh/u187yxc3","slide":24,"bbox":[90,250,5,48]}
+{"kind":"textbox","id":"sh/v2hor2to","slide":24,"name":"Vite 8","text":"Vite 8\nused in code","textPreview":"Vite 8 | used in code","textChars":19,"textLines":2,"bbox":[90,320,220,48]}
+{"kind":"shape","id":"sh/8zqpwnux","slide":24,"bbox":[90,320,5,48]}
+{"kind":"textbox","id":"sh/90z6psbi","slide":24,"name":"Tailwind 4","text":"Tailwind 4\nused in code","textPreview":"Tailwind 4 | used in code","textChars":23,"textLines":2,"bbox":[90,390,220,48]}
+{"kind":"shape","id":"sh/t0bmtwvq","slide":24,"bbox":[90,390,5,48]}
+{"kind":"textbox","id":"sh/sz2l0re5","slide":24,"name":"Leaflet / Recharts","text":"Leaflet / Recharts\nused in code","textPreview":"Leaflet / Recharts | used in code","textChars":31,"textLines":2,"bbox":[90,460,220,48]}
+{"kind":"shape","id":"sh/7yt4rmd0","slide":24,"bbox":[90,460,5,48]}
+{"kind":"textbox","id":"sh/6xk3y1wf","slide":24,"text":"BACKEND","textPreview":"BACKEND","textChars":7,"textLines":1,"bbox":[390,190,220,26]}
+{"kind":"textbox","id":"sh/5wbmpwvu","slide":24,"name":"Python 3.12","text":"Python 3.12\nused in code","textPreview":"Python 3.12 | used in code","textChars":24,"textLines":2,"bbox":[390,250,220,48]}
+{"kind":"shape","id":"sh/kb2lwre9","slide":24,"bbox":[390,250,5,48]}
+{"kind":"textbox","id":"sh/jat4nmdo","slide":24,"name":"FastAPI","text":"FastAPI\nused in code","textPreview":"FastAPI | used in code","textChars":20,"textLines":2,"bbox":[390,320,220,48]}
+{"kind":"shape","id":"sh/i903uhw3","slide":24,"bbox":[390,320,5,48]}
+{"kind":"textbox","id":"sh/x8rmlcvi","slide":24,"name":"Uvicorn","text":"Uvicorn\nused in code","textPreview":"Uvicorn | used in code","textChars":20,"textLines":2,"bbox":[390,390,220,48]}
+{"kind":"shape","id":"sh/w7ils7ed","slide":24,"bbox":[390,390,5,48]}
+{"kind":"textbox","id":"sh/obml87mt","slide":24,"name":"httpx","text":"httpx\nused in code","textPreview":"httpx | used in code","textChars":18,"textLines":2,"bbox":[390,460,220,48]}
+{"kind":"shape","id":"sh/pcvm1c3e","slide":24,"bbox":[390,460,5,48]}
+{"kind":"textbox","id":"sh/2p436h43","slide":24,"text":"DATA","textPreview":"DATA","textChars":4,"textLines":1,"bbox":[690,190,220,26]}
+{"kind":"textbox","id":"sh/nqd4zmlo","slide":24,"name":"SQLite locally","text":"SQLite locally\nused in code","textPreview":"SQLite locally | used in code","textChars":27,"textLines":2,"bbox":[690,250,220,48]}
+{"kind":"shape","id":"sh/0n2l47mx","slide":24,"bbox":[690,250,5,48]}
+{"kind":"textbox","id":"sh/1ovmxc3i","slide":24,"name":"Postgres on Render","text":"Postgres on Render\nused in code","textPreview":"Postgres on Render | used in code","textChars":31,"textLines":2,"bbox":[690,320,220,48]}
+{"kind":"shape","id":"sh/elk32x4r","slide":24,"bbox":[690,320,5,48]}
+{"kind":"textbox","id":"sh/fmt4v25c","slide":24,"name":"parameterized SQL","text":"parameterized SQL\nused in code","textPreview":"parameterized SQL | used in code","textChars":30,"textLines":2,"bbox":[690,390,220,48]}
+{"kind":"shape","id":"sh/kj65grm1","slide":24,"bbox":[690,390,5,48]}
+{"kind":"textbox","id":"sh/lkfm9w3m","slide":24,"name":"raw + derived state","text":"raw + derived state\nused in code","textPreview":"raw + derived state | used in code","textChars":32,"textLines":2,"bbox":[690,460,220,48]}
+{"kind":"shape","id":"sh/ve1ozq5o","slide":24,"bbox":[690,460,5,48]}
+{"kind":"textbox","id":"sh/ud8765oj","slide":24,"text":"INTEGRATIONS","textPreview":"INTEGRATIONS","textChars":12,"textLines":1,"bbox":[990,190,220,26]}
+{"kind":"textbox","id":"sh/hgjq10nu","slide":24,"name":"Meta WhatsApp","text":"Meta WhatsApp\nused in code","textPreview":"Meta WhatsApp | used in code","textChars":26,"textLines":2,"bbox":[990,250,220,48]}
+{"kind":"shape","id":"sh/gfap8v69","slide":24,"bbox":[990,250,5,48]}
+{"kind":"textbox","id":"sh/32183a50","slide":24,"name":"Groq text / Whisper","text":"Groq text / Whisper\nused in code","textPreview":"Groq text / Whisper | used in code","textChars":32,"textLines":2,"bbox":[990,320,220,48]}
+{"kind":"shape","id":"sh/i1s7a5of","slide":24,"bbox":[990,320,5,48]}
+{"kind":"textbox","id":"sh/54jq5kn6","slide":24,"name":"Render deploy","text":"Render deploy\nused in code","textPreview":"Render deploy | used in code","textChars":26,"textLines":2,"bbox":[990,390,220,48]}
+{"kind":"shape","id":"sh/43apcf6l","slide":24,"bbox":[990,390,5,48]}
+{"kind":"textbox","id":"sh/j6xor65w","slide":24,"name":"REST API","text":"REST API\nused in code","textPreview":"REST API | used in code","textChars":21,"textLines":2,"bbox":[990,460,220,48]}
+{"kind":"shape","id":"sh/y5o7ylob","slide":24,"bbox":[990,460,5,48]}
+{"kind":"textbox","id":"sh/qps7elw7","slide":24,"text":"Source of truth: the repositories, not the diagram.","textPreview":"Source of truth: the repositories, not the diagram.","textChars":51,"textLines":1,"bbox":[342,590,600,28]}
+{"kind":"textbox","id":"sh/bq18nqxc","slide":24,"text":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textPreview":"HACKATHON PROTOTYPE / SOURCE-OF-TRUTH WALKTHROUGH","textChars":49,"textLines":1,"bbox":[64,686,780,18]}
+{"kind":"textbox","id":"sh/crapgvex","slide":24,"text":"24","textPreview":"24","textChars":2,"textLines":1,"bbox":[1160,682,56,24]}
+{"kind":"notes","id":"nt/1krtd5","slide":24,"text":"\n\n[Sources]\n- C:/Users/KIIT/cowork/Aapda_AI/package.json\n- C:/Users/KIIT/cowork/aapdaai-backend/requirements.txt\n- C:/Users/KIIT/cowork/aapdaai-backend/render.yaml\n- C:/Users/KIIT/cowork/aapdaai-backend/app/llm.py\n- C:/Users/KIIT/cowork/aapdaai-backend/app/main.py"}
