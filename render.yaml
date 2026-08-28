@@ -21,6 +21,15 @@ databases:
     plan: free
     databaseName: aapdaai
     user: aapdaai
+    # MUST MATCH THE SERVICE REGION BELOW.
+    # Leaving this out defaults the database to Oregon while the service sits
+    # in Singapore. Render's internal hostname (dpg-...-a) only resolves inside
+    # one region, so the app crashed on startup with
+    #     could not translate host name "dpg-..." to address
+    # every deploy failed, and Render quietly kept serving the last build that
+    # worked. The API stayed up and looked healthy for a full day while nothing
+    # new was actually live. Region mismatch is invisible until it isn't.
+    region: singapore
 
 services:
   - type: web
