@@ -312,6 +312,19 @@ def submit_report(body: dict) -> dict:
         )
     except ValueError as err:
         raise HTTPException(422, str(err)) from err
+    except Exception as err:                                    # noqa: BLE001
+        # A citizen's report must never be lost to an unexpected server error,
+        # and they must never be told it failed when it didn't. By the time
+        # anything below the write can raise, the rows are already committed -
+        # so a 500 here is a lie that makes people submit twice.
+        print(f"[reports] stored, but post-processing failed: {err!r}")
+        return {
+            "accepted": True,
+            "understood": "",
+            "actionable": False,
+            "still_needed": [],
+            "note": "saved; details unavailable",
+        }
 
 
 # --- inventory ---------------------------------------------------------------

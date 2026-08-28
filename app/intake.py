@@ -98,11 +98,25 @@ def submit(text: str, lat: float | None = None, lng: float | None = None,
 
     # Show them what we understood. A form that swallows a report silently is
     # how people conclude nobody is listening and go back to calling 112.
-    from app.extract import extract, group_by_reporter
-    from app.pipeline import load_needs
-
-    mine = [n for n in load_needs() if n.reporter == reporter]
-    need = max(mine, key=lambda n: n.received_at) if mine else None
+    #
+    # THE REPORT IS ALREADY SAVED ABOVE. Everything from here is a courtesy,
+    # and it must never be able to fail the submission.
+    #
+    # It could, and it did. This used to call load_needs(), which re-reads and
+    # re-parses EVERY message the system has ever received - so one unparseable
+    # conversation belonging to a completely different person raised, FastAPI
+    # returned 500, and the citizen was told their report failed. It hadn't;
+    # it was already in the database. They submitted again.
+    #
+    # Two fixes, and both matter:
+    #   1. read only THIS reporter's messages - one person's bad state cannot
+    #      reach another person's submission, and it stops being O(everything)
+    #   2. wrap it, because a courtesy is not worth a lost report
+    need = None
+    try:
+        need = _understood(reporter)
+    except Exception as err:                                    # noqa: BLE001
+        print(f"[intake] echo-back failed for {reporter}: {err!r}")
 
     return {
         "accepted": True,
@@ -113,3 +127,25 @@ def submit(text: str, lat: float | None = None, lng: float | None = None,
         "actionable": bool(need and need.is_actionable()),
         "still_needed": need.missing() if need else ["location"],
     }
+
+
+def _understood(reporter: str):
+    """Parse just this reporter's own messages, folded into one report.
+
+    Scoped on purpose. The pipeline's full rebuild is the right thing when the
+    dashboard asks for every incident; it is the wrong thing when one person
+    presses Submit and is waiting on the response.
+    """
+    import json
+
+    from app.db import get_db
+    from app.extract import extract, group_by_reporter
+
+    with get_db() as conn:
+        rows = conn.execute(
+            "SELECT payload FROM raw_messages WHERE from_number = ? "
+            "ORDER BY id", (reporter,)).fetchall()
+
+    mine = group_by_reporter([extract(json.loads(r["payload"])) for r in rows])
+    mine = [n for n in mine if n.reporter == reporter]
+    return max(mine, key=lambda n: n.received_at) if mine else None

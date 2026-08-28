@@ -95,3 +95,37 @@ def test_none_marker_never_overwrites_a_known_value(fresh):
     needs = [n for n in pipeline.load_needs() if n.reporter == phone]
     assert needs
     assert needs[0].injured == 5, "a marker must not erase what they told us"
+
+
+def test_web_report_survives_someone_elses_broken_conversation(fresh):
+    """A citizen's submission must not fail because of another person's state.
+
+    REGRESSION. POST /reports called load_needs(), which re-parses EVERY
+    message in the system. One poisoned conversation belonging to an unrelated
+    number raised, FastAPI returned 500, and the citizen saw
+
+        "We couldn't send that report. Check your connection and try again."
+
+    The report was already in the database. They submitted again.
+    """
+    from app import intake
+
+    # Somebody else, mid-conversation, with a question they never answered.
+    stranger = f"9188{uuid.uuid4().int % 10**8:08d}"
+    _store(stranger, "help")
+    pipeline._save_conversation(
+        stranger, {"answers": {"deficits": None}, "pending": ""}
+    )
+
+    result = intake.submit(
+        text="30 people trapped at Nayapalli, no water",
+        lat=20.2961,
+        lng=85.8245,
+        place="Nayapalli",
+        source="web",
+        reported_by="Tester",
+    )
+
+    assert result["accepted"] is True
+    # And it still understood its own report, rather than degrading silently.
+    assert "30 people" in result["understood"], result["understood"]
