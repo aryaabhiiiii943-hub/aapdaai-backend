@@ -6,6 +6,21 @@ help is needed and how much.
 **This service does not dispatch anything.** It produces recommendations for the
 District Disaster Management Authority, who decide.
 
+> ### Reviewing this project?
+>
+> **Start with [SUBMISSION.md](SUBMISSION.md)** — live links, a five-minute
+> review path, and an honest list of what this does and doesn't do.
+>
+> | | |
+> |---|---|
+> | Try it | https://aapdaai-dashboard.onrender.com |
+> | API docs | https://aapdaai-backend.onrender.com/docs |
+> | Dashboard code | [Aapda_AI, branch `backend-integration`](https://github.com/aryaabhiiiii943-hub/Aapda_AI/tree/backend-integration) |
+>
+> The dashboard is a teammate's project; this repo is the backend and the
+> integration branch that connects the two. Both sites sleep on Render's free
+> tier — **the first load takes about 50 seconds.**
+
 ---
 
 ## Run it
