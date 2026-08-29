@@ -130,15 +130,29 @@ def nearest_available(kind: str, lat: float, lng: float) -> dict | None:
     return min(candidates, key=lambda c: c["distance_km"])
 
 
-def recommend(incident: Incident) -> list[dict]:
+def _nearest_from(resources: list[dict], kind: str,
+                  lat: float, lng: float) -> dict | None:
+    candidates = [r for r in resources
+                  if r["kind"] == kind and r["status"] == "available"]
+    if not candidates:
+        return None
+    for c in candidates:
+        c["distance_km"] = round(
+            distance_m(lat, lng, c["lat"], c["lng"]) / 1000, 1)
+    return min(candidates, key=lambda c: c["distance_km"])
+
+
+def recommend(incident: Incident, resource_rows: list[dict] | None = None
+              ) -> list[dict]:
     """One named unit per kind of help this incident needs.
 
     Returns what is actually available. When nothing of a kind is free that is
     itself the answer - and a more useful one than silence.
     """
+    resources = resource_rows if resource_rows is not None else all_resources()
     out = []
     for kind in kinds_needed(incident):
-        unit = nearest_available(kind, incident.lat, incident.lng)
+        unit = _nearest_from(resources, kind, incident.lat, incident.lng)
         out.append({
             "kind": kind,
             "unit": unit["name"] if unit else None,
@@ -163,17 +177,20 @@ def nearest_facility(kind: str, lat: float, lng: float) -> dict | None:
 
 # --- shortage ----------------------------------------------------------------
 
-def shortage(required: dict[str, int]) -> list[dict]:
+def shortage(required: dict[str, int], resource_rows: list[dict] | None = None
+             ) -> list[dict]:
     """Need minus stock, per kind. The strategy document's headline claim.
 
     "Zone B needs 40, stock is 10, shortage is 30" is only sayable if stock is
     a real number somewhere. This is that number.
     """
+    resources = resource_rows if resource_rows is not None else all_resources()
     out = []
     for kind, need in required.items():
         if kind not in KINDS:
             continue
-        have = len(all_resources(kind=kind, status="available"))
+        have = sum(1 for r in resources
+                   if r["kind"] == kind and r["status"] == "available")
         if need > have:
             out.append({"kind": kind, "required": need, "available": have,
                         "shortage": need - have})
@@ -224,11 +241,29 @@ def release(resource_id: int) -> dict:
 
 
 def assigned_to(incident_id: int) -> list[dict]:
+    return assigned_map([incident_id]).get(incident_id, [])
+
+
+def assigned_map(incident_ids: list[int]) -> dict[int, list[dict]]:
+    """Load assignments for several incidents in one query.
+
+    Incident briefs are requested in batches by the dashboard. Keeping this
+    read batched avoids opening one database connection per incident.
+    """
+    if not incident_ids:
+        return {}
+    placeholders = ",".join("?" for _ in incident_ids)
     with get_db() as conn:
         rows = conn.execute(
-            "SELECT a.id, a.purpose, a.status, a.assigned_at, "
+            "SELECT a.incident_id, a.id, a.purpose, a.status, a.assigned_at, "
             "       r.name, r.kind, r.org "
             "FROM assignments a JOIN resources r ON r.id = a.resource_id "
-            "WHERE a.incident_id = ? AND a.released_at IS NULL",
-            (incident_id,)).fetchall()
-    return [dict(r) for r in rows]
+            f"WHERE a.incident_id IN ({placeholders}) "
+            "AND a.released_at IS NULL",
+            incident_ids).fetchall()
+    out = {incident_id: [] for incident_id in incident_ids}
+    for row in rows:
+        assignment = dict(row)
+        assignment.pop("incident_id", None)
+        out.setdefault(row["incident_id"], []).append(assignment)
+    return out

@@ -211,7 +211,9 @@ def _assistance(incident: Incident) -> dict:
                 "confirmed_arrived": 0, "still_waiting": 0}
 
 
-def brief(incident: Incident) -> dict:
+def brief(incident: Incident, resource_rows: list[dict] | None = None,
+          assigned: list[dict] | None = None,
+          assistance: dict | None = None) -> dict:
     """Everything needed to make one decision, and nothing else.
 
     A priority number is not actionable. Where, what, how much, how sure, and
@@ -227,7 +229,7 @@ def brief(incident: Incident) -> dict:
     # Which named units, and whether enough of them exist. "Send 2 ambulances"
     # is a requirement; "send Capital Hospital Ambulance 04, 4.2 km" is a
     # decision, and the difference is an inventory.
-    units = inventory.recommend(incident)
+    units = inventory.recommend(incident, resource_rows=resource_rows)
     required = {u["kind"]: 1 for u in units}
     if resources.get("ambulances"):
         required["ambulance"] = int(resources["ambulances"])
@@ -236,7 +238,11 @@ def brief(incident: Incident) -> dict:
     if resources.get("water_litres_now"):
         required["supply_vehicle"] = max(
             1, -(-int(resources["water_litres_now"]) // LITRES_PER_TANKER))
-    gaps = inventory.shortage(required)
+    gaps = inventory.shortage(required, resource_rows=resource_rows)
+    if assigned is None:
+        assigned = inventory.assigned_to(incident.id) if incident.id else []
+    if assistance is None:
+        assistance = _assistance(incident)
     return {
         "id": incident.id,
         "place": incident.place_text or "unnamed location",
@@ -254,7 +260,7 @@ def brief(incident: Incident) -> dict:
         "send": resources,
         "dispatch": units,               # named units, nearest available
         "shortage": gaps,                # need minus what exists
-        "assigned": inventory.assigned_to(incident.id) if incident.id else [],
+        "assigned": assigned,
         "exceeds_local_capacity": beyond,
         "severity": sev,
         "severity_band": band(sev),
@@ -266,6 +272,6 @@ def brief(incident: Incident) -> dict:
         "response": incident.response,
         # What the people there actually experienced, which is not the same
         # thing as what we dispatched.
-        **_assistance(incident),
+        **assistance,
         "created_at": incident.created_at.isoformat(),
     }

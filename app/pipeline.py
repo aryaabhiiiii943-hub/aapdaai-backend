@@ -119,7 +119,18 @@ def build(use_llm: bool = False) -> tuple[list[Incident], list[Need]]:
 def briefs(use_llm: bool = False) -> list[dict]:
     """What the dashboard asks for: ranked, actionable, worst first."""
     incidents, _ = build(use_llm=use_llm)
-    out = [brief(i) for i in incidents]
+    from app import assistance, resources
+
+    resource_rows = resources.all_resources()
+    incident_ids = [i.id for i in incidents if i.id is not None]
+    assigned = resources.assigned_map(incident_ids)
+    assistance_states = assistance.state_map(incident_ids)
+    out = [brief(
+        i,
+        resource_rows=resource_rows,
+        assigned=assigned.get(i.id, []),
+        assistance=assistance_states.get(i.id),
+    ) for i in incidents]
     out.sort(key=lambda b: (b["severity"], b["confidence"]), reverse=True)
     return out
 

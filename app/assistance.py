@@ -130,41 +130,59 @@ def record_reply(reporter: str, text: str) -> str | None:
 
 def state_of(incident: Incident) -> dict:
     """What actually happened to this report, from the ground's point of view."""
+    return state_map([incident.id]).get(incident.id, _empty_state())
+
+
+def _empty_state() -> dict:
+    return {"assistance": UNASSISTED, "asked": 0, "answered": 0,
+            "confirmed_arrived": 0, "still_waiting": 0}
+
+
+def state_map(incident_ids: list[int]) -> dict[int, dict]:
+    """Read assistance state for a batch of incidents in two queries."""
+    if not incident_ids:
+        return {}
+    placeholders = ",".join("?" for _ in incident_ids)
     with get_db() as conn:
         rows = conn.execute(
-            "SELECT arrived, replied_at FROM arrival_checks "
-            "WHERE incident_id = ?", (incident.id,)).fetchall()
-        committed = conn.execute(
-            "SELECT COUNT(*) AS n FROM assignments "
-            "WHERE incident_id = ? AND released_at IS NULL",
-            (incident.id,)).fetchone()["n"]
+            "SELECT incident_id, arrived, replied_at FROM arrival_checks "
+            f"WHERE incident_id IN ({placeholders})", incident_ids).fetchall()
+        committed_rows = conn.execute(
+            "SELECT incident_id, COUNT(*) AS n FROM assignments "
+            f"WHERE incident_id IN ({placeholders}) "
+            "AND released_at IS NULL GROUP BY incident_id",
+            incident_ids).fetchall()
 
     # SQLite hands booleans back as 0/1, Postgres as True/False. `is False`
     # silently fails on the integer, so the "no" was recorded and never
     # counted - which would have made the map turn green on a report where
     # someone had just said nobody had come.
-    answered = [r for r in rows if r["replied_at"]]
-    said_yes = [r for r in answered if bool(r["arrived"])]
-    said_no = [r for r in answered if not bool(r["arrived"])]
-
-    if said_yes:
-        state = ARRIVED
-    elif said_no:
-        # Somebody on the ground says nothing has reached them. That outranks
-        # anything the dispatch record claims.
-        state = UNREACHABLE
-    elif committed:
-        state = ASSISTED
-    else:
-        state = UNASSISTED
-
-    return {
-        "assistance": state,
-        "asked": len(rows),
-        "answered": len(answered),
-        "confirmed_arrived": len(said_yes),
-        "still_waiting": len(said_no),
-    }
+    grouped = {incident_id: [] for incident_id in incident_ids}
+    for row in rows:
+        grouped.setdefault(row["incident_id"], []).append(row)
+    committed = {row["incident_id"]: row["n"] for row in committed_rows}
+    out = {}
+    for incident_id in incident_ids:
+        checks = grouped.get(incident_id, [])
+        answered = [r for r in checks if r["replied_at"]]
+        said_yes = [r for r in answered if bool(r["arrived"])]
+        said_no = [r for r in answered if not bool(r["arrived"])]
+        if said_yes:
+            state = ARRIVED
+        elif said_no:
+            state = UNREACHABLE
+        elif committed.get(incident_id, 0):
+            state = ASSISTED
+        else:
+            state = UNASSISTED
+        out[incident_id] = {
+            "assistance": state,
+            "asked": len(checks),
+            "answered": len(answered),
+            "confirmed_arrived": len(said_yes),
+            "still_waiting": len(said_no),
+        }
+    return out
 
 
 def unassisted(incidents: list[Incident]) -> list[dict]:
@@ -177,8 +195,9 @@ def unassisted(incidents: list[Incident]) -> list[dict]:
     """
     out = []
     now = datetime.now(timezone.utc)
+    states = state_map([i.id for i in incidents])
     for incident in incidents:
-        s = state_of(incident)
+        s = states.get(incident.id, _empty_state())
         if s["assistance"] in (UNASSISTED, UNREACHABLE):
             waiting = (now - incident.created_at).total_seconds() / 60
             out.append({
