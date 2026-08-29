@@ -180,6 +180,15 @@ export async function fetchFollowUps() {
   return follow_ups;
 }
 
+export async function fetchMyReports({ reporter = "", reportedBy = "" } = {}) {
+  const params = new URLSearchParams();
+  if (reporter) params.set("reporter", reporter);
+  if (reportedBy) params.set("reported_by", reportedBy);
+  const query = params.toString();
+  const { reports } = await get(`/reports${query ? `?${query}` : ""}`);
+  return reports;
+}
+
 /* The citizen form and the 112 operator console both land here. `source`
  * decides how much one report is worth on its own. */
 export async function submitReport({

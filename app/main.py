@@ -169,6 +169,7 @@ def index() -> dict:
             "GET /health": "is it awake",
             "GET /incidents": "ranked incidents, severity + confidence",
             "GET /follow-ups": "reports we can't act on yet, and what to ask",
+            "GET /reports": "one customer's submitted reports",
             "GET /stats": "dashboard tiles",
             "GET /resources": "ambulances, teams, trucks, boats",
             "GET /facilities": "hospitals and shelters",
@@ -209,6 +210,23 @@ def incidents(llm: bool = False) -> dict:
 def follow_ups(llm: bool = False) -> dict:
     """Reports we can't act on yet, and the one question to ask each person."""
     return {"follow_ups": pipeline.follow_ups(use_llm=llm)}
+
+
+@router.get("/reports")
+def list_reports(reporter: str = "", reported_by: str = "",
+                 name: str = "", phone: str = "") -> dict:
+    """Return one customer's reports and any follow-up state.
+
+    The web form has no account system yet. A returned reporter token is the
+    preferred filter; the volunteered name is supported for the hackathon UI.
+    Requiring one of them avoids exposing every citizen report by accident.
+    """
+    reporter = (reporter or phone).strip()
+    reported_by = (reported_by or name).strip()
+    if not reporter and not reported_by:
+        raise HTTPException(422, "reporter or reported_by is required")
+    return {"reports": pipeline.report_history(
+        reporter=reporter, reported_by=reported_by)}
 
 
 @router.post("/incidents/{incident_id}/verify")

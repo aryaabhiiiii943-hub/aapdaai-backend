@@ -152,6 +152,50 @@ def follow_ups(use_llm: bool = False) -> list[dict]:
     } for n in stuck]
 
 
+def report_history(reporter: str = "", reported_by: str = "",
+                   use_llm: bool = False) -> list[dict]:
+    """Reports belonging to one web customer, including pending follow-ups."""
+    incidents, stuck = build(use_llm=use_llm)
+    by_id = {i.id: i for i in incidents}
+    needs = [n for incident in incidents for n in incident.needs] + stuck
+    reporter = reporter.strip()
+    name = reported_by.strip().casefold()
+
+    def belongs_to(need) -> bool:
+        return ((reporter and need.reporter == reporter)
+                or (name and need.reported_by.casefold() == name))
+
+    response_labels = {
+        "pending": "pending",
+        "assigned": "responding",
+        "in_progress": "responding",
+        "resolved": "resolved",
+    }
+    out = []
+    for need in sorted((n for n in needs if belongs_to(n)),
+                       key=lambda n: n.received_at, reverse=True):
+        incident = by_id.get(need.incident_id)
+        out.append({
+            "id": need.key,
+            "reporter": need.reporter,
+            "reported_by": need.reported_by,
+            "source": need.source,
+            "said": need.raw_text[:200],
+            "status": response_labels.get(incident.response, "pending")
+            if incident else "follow_up",
+            "confirmation": incident.confirmation if incident else None,
+            "incident_id": need.incident_id,
+            "lat": need.lat,
+            "lng": need.lng,
+            "place": need.place_text,
+            "people": need.headcount,
+            "needs": need.deficits,
+            "missing": need.missing(),
+            "received_at": need.received_at.isoformat(),
+        })
+    return out
+
+
 def respond_to(reporter: str, last_text: str = "") -> str:
     """Read their latest message, learn from it, and ask the next thing.
 

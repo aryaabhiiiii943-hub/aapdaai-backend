@@ -84,8 +84,9 @@ percentages. `leaflet` and `react-leaflet` are already in `package.json` and
 never imported — and every incident now arrives with real `lat`/`lng`. That's
 the highest-visual-impact change available and it's unblocked.
 
-**It doesn't wire the report form or the verify buttons.** `api.js` has
-`submitReport()` and `verifyIncident()` ready; nothing calls them yet.
+**It doesn't wire the report form, report history, or the verify buttons.**
+`api.js` has `submitReport()`, `fetchMyReports()`, and `verifyIncident()` ready;
+the customer components still need to call them.
 
 ---
 

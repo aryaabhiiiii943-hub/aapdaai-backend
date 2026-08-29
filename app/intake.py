@@ -82,6 +82,7 @@ def submit(text: str, lat: float | None = None, lng: float | None = None,
             "text": {"body": text.strip()[:2000]},
             "_source": source,
             "_reported_by": reported_by,      # the operator's name, if any
+            "_place": place.strip()[:120],
             "_photos": kept,
         }, reporter, "text")
 
