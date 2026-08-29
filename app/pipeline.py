@@ -232,6 +232,10 @@ def respond_to(reporter: str, last_text: str = "") -> str:
             return "arrival:still_waiting"
 
     state = _conversation(reporter)
+    if last_text.strip() and state.get("concluded"):
+        # A new message after a polite close may contain the location or a
+        # correction. Let it reopen the conversation and re-evaluate the need.
+        state["concluded"] = False
     answers = state.get("answers", {})
     pending = state.get("pending", "")
     learned = False
@@ -317,7 +321,20 @@ def respond_to(reporter: str, last_text: str = "") -> str:
     # on - is off the list, so one unparseable reply doesn't block the rest.
     question = ask.next_question(need, asked=set(answers.keys()))
     if question is None:
-        return "nothing left to ask"
+        if not state.get("concluded"):
+            message = (
+                "We've recorded what you shared. The control room has this "
+                "report and won't ask more questions right now. Message us "
+                "again if the situation changes."
+                if need.is_actionable() else
+                "Thanks — we've recorded what you know and won't keep asking "
+                "questions. If it becomes safe, send your location so the "
+                "control room can direct help. For immediate danger, call 112."
+            )
+            notify.send.send_text(reporter, message)
+            state["concluded"] = True
+            _save_conversation(reporter, state)
+        return "concluded"
 
     notify.send.send_text(reporter, question.render())
     state["pending"] = question.slot

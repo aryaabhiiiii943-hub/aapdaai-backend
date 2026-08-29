@@ -116,29 +116,25 @@ def next_question(need: Need, asked: set[str] | None = None) -> Question | None:
     if not need.has_location:
         candidates.append(_LOCATION_Q)
 
-    # Someone is stuck and we don't know what from. This is the question that
-    # decides boats vs cutting gear vs a fire engine.
+    # Keep the WhatsApp conversation short. These are the only facts needed to
+    # place a report and make a first recommendation: where, how many, and
+    # what is needed. The remaining details are useful to an officer, but are
+    # not worth interrogating a person who is already under stress.
     if (need.trapped or "rescue" in need.deficits) and not need.hazard:
         candidates.append(_HAZARD_Q)
 
-    if not need.deficits:
+    inferred = set()
+    if need.trapped:
+        inferred.add("rescue")
+    if need.injured:
+        inferred.add("medical")
+    reported_needs = [d for d in need.deficits if d not in inferred]
+    if not reported_needs:
         candidates.append(_NEED_Q)
 
-    # Only worth asking once we know something is wrong there.
-    if need.injured is None and (need.trapped or need.hazard
-                                 or need.deficits):
-        candidates.append(_INJURED_Q)
-
-    # Only once we know something is actually wrong - asking this of someone
-    # who just said "hello" is intrusive and useless.
-    if not need.vulnerable and (need.trapped or need.hazard or need.deficits):
-        candidates.append(_VULNERABLE_Q)
-
-    if need.headcount is None:
+    if (need.headcount is None and not need.deficits and need.injured is None
+            and need.trapped is None):
         candidates.append(_HEADCOUNT_Q)
-
-    if need.access_blocked is None and (need.trapped or need.deficits):
-        candidates.append(_ACCESS_Q)
 
     candidates = [q for q in candidates if q.slot not in asked]
     if not candidates:
@@ -197,6 +193,15 @@ def apply_answer(need: Need, slot: str, reply: str, use_llm: bool = True) -> boo
 def _apply_rules(need: Need, slot: str, reply: str) -> bool:
     """Numbers and obvious keywords only. No network."""
     text = reply.strip().lower()
+
+    # Not knowing is a real answer. Marking the slot as answered lets the
+    # conversation move forward instead of asking the same question again.
+    # The value remains None, so the operator can still see what is missing.
+    if any(w in text for w in _DONT_KNOW) or text in {
+        "idk", "dont", "don't", "nope", "can't help",
+    }:
+        return True
+
     index = None
     if text[:1].isdigit():
         try:

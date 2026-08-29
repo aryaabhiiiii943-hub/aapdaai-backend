@@ -136,3 +136,17 @@ def test_the_report_is_actionable_before_any_question_is_answered(fresh):
     incidents, _ = pipeline.build()
     assert len(incidents) == 1
     assert incidents[0].trapped == 200
+
+
+def test_i_dont_know_moves_forward_and_concludes(fresh):
+    """Unknown answers must not re-ask forever or leave the person in silence."""
+    inbound("we are 4 people stuck here", mid="h1")
+    inbound(location=True, mid="h2")
+
+    result = inbound("I don't know", mid="h3")
+    assert result == "asked:deficits (learned)"
+
+    result = inbound("I don't know", mid="h4")
+    assert result == "concluded"
+    assert "recorded" in fresh[-1][1]
+    assert "ask" in fresh[-1][1]
