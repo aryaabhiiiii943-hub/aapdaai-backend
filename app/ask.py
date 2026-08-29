@@ -252,6 +252,25 @@ def _apply_rules(need: Need, slot: str, reply: str) -> bool:
             return True
 
     elif slot == "access_blocked":
+        # "I DON'T KNOW" IS AN ANSWER, AND IT IS CHECKED FIRST.
+        #
+        # Two bugs lived here.
+        #
+        # The question offers three options and this branch handled two, so a
+        # tapped "3" fell through to False and the person was told "Sorry, I
+        # didn't catch that" - for choosing an option we printed ourselves.
+        # Twice, and then we gave up on them.
+        #
+        # Worse, and only found by testing every phrasing: "not sure" and
+        # "no idea" both start with "no", so the check below recorded them as
+        # THE ROAD IS BLOCKED. Someone saying they don't know would have sent
+        # a rescue team round a detour that was never needed. Uncertainty must
+        # be read before yes/no, not after.
+        #
+        # access_blocked stays None: we asked, and nobody knows. That is not
+        # the same as "the road is clear" and an officer should see it.
+        if index == 2 or any(w in text for w in _DONT_KNOW):
+            return True
         if index == 0 or "clear" in text or text.startswith("yes"):
             need.access_blocked = False
             return True
@@ -260,6 +279,16 @@ def _apply_rules(need: Need, slot: str, reply: str) -> bool:
             return True
 
     return False
+
+
+# "I don't know", in the languages people actually reply in. Not knowing is a
+# legitimate answer to every question here and must never read as a failure.
+_DONT_KNOW = (
+    "don't know", "dont know", "do not know", "not know", "no idea",
+    "unsure", "not sure", "can't say", "cant say", "unknown",
+    "pata nahi", "pata nhi", "nahi pata", "nhi pata", "malum nahi",
+    "maalum nahi", "jana nahi", "janu nahi",       # Odia: jaṇā nāhିଁ
+)
 
 
 # --- what the hazard changes -------------------------------------------------
