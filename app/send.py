@@ -51,6 +51,8 @@ def send_text(to: str, body: str) -> SendResult:
     incident that prompted it is worse.
     """
     if not WHATSAPP_TOKEN or not WHATSAPP_PHONE_NUMBER_ID:
+        print("[send] WhatsApp credentials not configured: set "
+              "WHATSAPP_TOKEN and WHATSAPP_PHONE_NUMBER_ID")
         return SendResult(False, error="WhatsApp credentials not configured")
     if not to or not body.strip():
         return SendResult(False, error="need both a recipient and a body")

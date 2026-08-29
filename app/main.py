@@ -14,7 +14,7 @@ from fastapi import (APIRouter, BackgroundTasks, FastAPI, HTTPException,
                      Request, Response)
 from fastapi.middleware.cors import CORSMiddleware
 
-from app import assistance, demo, intake, inventory_seed
+from app import assistance, config, demo, intake, inventory_seed
 from app import notify as notify_mod
 from app import pipeline
 from app import resources as inventory
@@ -187,7 +187,18 @@ def index() -> dict:
 
 @router.get("/health")
 def health() -> dict:
-    return {"ok": True}
+    whatsapp_ready = bool(
+        config.WHATSAPP_TOKEN and config.WHATSAPP_PHONE_NUMBER_ID
+    )
+    return {
+        "ok": True,
+        "chatbot": {
+            "receive_configured": bool(config.WHATSAPP_PHONE_NUMBER_ID),
+            "send_configured": whatsapp_ready,
+            "verify_configured": bool(config.WHATSAPP_VERIFY_TOKEN),
+        },
+        "ai_optional": bool(config.GROQ_API_KEY),
+    }
 
 
 # --- what the dashboard reads ------------------------------------------------
